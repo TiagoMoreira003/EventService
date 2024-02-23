@@ -20,16 +20,15 @@ namespace EventService.Presentation.WebAPI
 	using Microsoft.OpenApi.Models;
 	using Newtonsoft.Json;
 	using Newtonsoft.Json.Converters;
-	using EventService.Infrastructure;
-	using EventService.Presentation.WebAPI.Configuration;
-	using EventService.Presentation.WebAPI.Exceptions.Middleware;
 	using EventService.Presentation.WebAPI.Validation;
+	using EventService.Infrastructure;
 
 	/// <summary>
 	/// <see cref="Startup"/>
 	/// </summary>
 	public class Startup
 	{
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Startup"/> class.
 		/// </summary>
@@ -42,8 +41,11 @@ namespace EventService.Presentation.WebAPI
 		/// <summary>
 		/// Gets the configuration.
 		/// </summary>
-		/// <value>The configuration.</value>
+		/// <value>
+		/// The configuration.
+		/// </value>
 		public IConfiguration Configuration { get; }
+
 
 		/// <summary>
 		/// Configures the specified application.
@@ -72,6 +74,7 @@ namespace EventService.Presentation.WebAPI
 				endpoints.MapControllers();
 			});
 		}
+
 
 		/// <summary>
 		/// Configures the services.

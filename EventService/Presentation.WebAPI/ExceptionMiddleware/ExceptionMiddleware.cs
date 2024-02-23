@@ -97,7 +97,7 @@ namespace EventService.Presentation.WebAPI.Exceptions.Middleware
 						Status = context.Response.StatusCode,
 						Message = exception.Message
 					},
-					Formatting.None,
+					Newtonsoft.Json.Formatting.None,
 					new JsonSerializerSettings
 					{
 						NullValueHandling = NullValueHandling.Ignore

@@ -10,8 +10,7 @@
 namespace EventService.Domain.Configuration
 {
 	using Microsoft.Extensions.DependencyInjection;
-	using EventService.Domain.AggregateModels.Team.Builder.TeamAcronymBuilder;
-	using EventService.Domain.AggregateModels.Team.Builder.TeamBuilder;
+
 
 	/// <summary>
 	/// <see cref="ServiceCollection"/>

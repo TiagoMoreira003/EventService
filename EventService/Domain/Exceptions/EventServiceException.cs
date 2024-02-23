@@ -48,7 +48,7 @@ namespace EventService.Domain.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="TeamServiceException"/> class.
+		/// Initializes a new instance of the <see cref="EventServiceException"/> class.
 		/// </summary>
 		/// <param name="message">The error message that explains the reason for the exception.</param>
 		/// <param name="innerException">
@@ -61,7 +61,7 @@ namespace EventService.Domain.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="TeamServiceException"/> class.
+		/// Initializes a new instance of the <see cref="EventServiceException"/> class.
 		/// </summary>
 		/// <param name="info">The information.</param>
 		/// <param name="context">The context.</param>

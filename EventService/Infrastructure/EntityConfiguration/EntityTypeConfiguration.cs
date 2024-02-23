@@ -12,7 +12,6 @@ namespace EventService.Infrastructure.EntityConfiguration
 	using EventService.Domain.SeedWork;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
-	using EventService.Domain.SeedWork;
 
 	/// <summary>
 	/// <see cref="EntityTypeConfiguration"/>

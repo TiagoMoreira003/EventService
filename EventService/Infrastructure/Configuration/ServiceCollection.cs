@@ -10,8 +10,6 @@
 namespace EventService.Infrastructure.Configuration
 {
 	using Microsoft.Extensions.DependencyInjection;
-	using EventService.Domain.AggregateModels.Team.Repository;
-	using EventService.Infrastructure.Repository;
 
 	/// <summary>
 	/// <see cref="ServiceCollection"/>
