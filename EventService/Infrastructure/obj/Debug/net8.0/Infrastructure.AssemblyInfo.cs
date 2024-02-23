@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Infrastructure")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("EventService.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbb26d5b521ed8d2d26042283fcc89e0cf4721c3")]
-[assembly: System.Reflection.AssemblyProductAttribute("Infrastructure")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Infrastructure")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+452f10674a8eded4ec7950f92e699f3e3a772350")]
+[assembly: System.Reflection.AssemblyProductAttribute("EventService.Infrastructure")]
+[assembly: System.Reflection.AssemblyTitleAttribute("EventService.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
