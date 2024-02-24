@@ -1,10 +1,15 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ServiceCollection.cs" company="KROWN">
+//     Copyright (c) KROWN. All rights reserved.
+// </copyright>
+// <summary>
+// ServiceCollection
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels
 {
-	using System;
-	using System.Collections.Generic;
-	using EventService.Domain.Exceptions;
 	using EventService.Domain.SeedWork;
+	using System.Collections.Generic;
 
 	/// <summary>
 	/// <see cref="Address"/>cref
@@ -12,14 +17,26 @@ namespace EventService.Domain.AggregateModels
 	/// <seealso cref="ValueObject" />
 	public class Address : ValueObject
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Address"/> class.
+		/// </summary>
+		/// <param name="street">The street.</param>
+		/// <param name="state">The state.</param>
+		/// <param name="postalcode">The postalcode.</param>
+		public Address(string street, string state, string postalCode)
+		{
+			this.Street = street;
+			this.State = state;
+			this.PostalCode = postalCode;
+		}
 
 		/// <summary>
-		/// Gets the street.
+		/// Gets the postalcode.
 		/// </summary>
 		/// <value>
-		/// The street.
+		/// The postalcode.
 		/// </value>
-		public string Street { get; private set; }
+		public string PostalCode { get; private set; }
 
 		/// <summary>
 		/// Gets the state.
@@ -30,26 +47,12 @@ namespace EventService.Domain.AggregateModels
 		public string State { get; private set; }
 
 		/// <summary>
-		/// Gets the postalcode.
+		/// Gets the street.
 		/// </summary>
 		/// <value>
-		/// The postalcode.
+		/// The street.
 		/// </value>
-		public string PostalCode { get; private set; }
-
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Address"/> class.
-		/// </summary>
-		/// <param name="street">The street.</param>
-		/// <param name="state">The state.</param>
-		/// <param name="postalcode">The postalcode.</param>
-		public Address(string street, string state, string postalCode) 
-		{
-			this.Street = street;
-			this.State = state;
-			this.PostalCode = postalCode;
-		}
+		public string Street { get; private set; }
 
 		/// <summary>
 		/// Gets the atomic values.

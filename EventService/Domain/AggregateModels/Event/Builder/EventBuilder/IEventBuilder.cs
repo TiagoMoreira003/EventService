@@ -9,6 +9,7 @@
 
 namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 {
+	using EventService.Domain.AggregateModels.Event;
 	using System;
 
 	/// <summary>
@@ -16,7 +17,6 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 	/// </summary>
 	public interface IEventBuilder
 	{
-
 		/// <summary>
 		/// Builds this instance.
 		/// </summary>
@@ -32,6 +32,5 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		/// <param name="location">The acronym.</param>
 		/// <returns></returns>
 		IEventBuilder NewEvent(DateTime datetime, string artist, MusicType musictype, Location location, string description);
-
 	}
 }

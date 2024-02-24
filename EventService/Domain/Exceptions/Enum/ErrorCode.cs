@@ -9,7 +9,7 @@
 namespace EventService.Domain.Exceptions.Enum
 {
 	/// <summary>
-	/// <see cref="ErrorCode"/>
+	///   <see cref="ErrorCode" />
 	/// </summary>
 	public enum ErrorCode
 	{
@@ -22,10 +22,5 @@ namespace EventService.Domain.Exceptions.Enum
 		/// The duplicated
 		/// </summary>
 		Duplicated = 202,
-
-		/// <summary>
-		/// The invalid odd
-		/// </summary>
-		InvalidOdd = 203,
 	}
 }

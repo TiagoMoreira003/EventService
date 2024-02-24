@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IEventBuilder.cs" company="KROWN">
+// <copyright file="ILocationBuilder.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// IEventBuilder
+// ILocationBuilder
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 

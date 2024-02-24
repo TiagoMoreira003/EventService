@@ -1,11 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TeamBuilder.cs" company="KROWN">
+// <copyright file="Location.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// TeamBuilder
+// Location
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System;
 
 namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 {
@@ -18,7 +20,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <summary>
 		/// The team
 		/// </summary>
-		private Location Location;
+		private Location location;
 
 		/// <summary>
 		/// Builds this instance.
@@ -26,7 +28,11 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <returns></returns>
 		public Location Build()
 		{
-			return this.Location;
+			if (location is null)
+			{
+				throw new InvalidOperationException("The event object is not initialized.");
+			}
+			return location;
 		}
 
 		// <summary>
@@ -38,7 +44,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <returns></returns>
 		public ILocationBuilder NewLocation(string latitud, string longitud, Address address)
 		{
-			this.Location = new Location(latitud, longitud, address);
+			location = new Location(latitud, longitud, address);
 
 			return this;
 		}

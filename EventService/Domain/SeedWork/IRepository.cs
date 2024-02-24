@@ -9,7 +9,6 @@
 
 namespace EventService.Domain.SeedWork
 {
-	using EventService.Domain.SeedWork;
 	using System;
 	using System.Collections.Generic;
 	using System.Threading;

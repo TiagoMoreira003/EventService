@@ -11,9 +11,8 @@ namespace EventService.Domain.Configuration
 {
 	using Microsoft.Extensions.DependencyInjection;
 
-
 	/// <summary>
-	/// <see cref="ServiceCollection"/>
+	///   <see cref="ServiceCollection" />
 	/// </summary>
 	public static class ServiceCollection
 	{
@@ -23,7 +22,6 @@ namespace EventService.Domain.Configuration
 		/// <param name="services">The services.</param>
 		public static void RegisterDomainServices(this IServiceCollection services)
 		{
-
 		}
 	}
 }
