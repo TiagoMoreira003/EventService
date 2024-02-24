@@ -9,26 +9,26 @@
 
 namespace EventService.Presentation.WebAPI
 {
-    using System.Reflection;
-    using Domain.Configuration;
-    using EventService.Presentation.WebAPI.Configuration;
-    using FluentValidation.AspNetCore;
-    using Infrastructure.Configuration;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.OpenApi.Models;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using EventService.Presentation.WebAPI.Validation;
-    using EventService.Infrastructure;
+	using Domain.Configuration;
+	using EventService.Infrastructure;
+	using EventService.Presentation.WebAPI.Configuration;
 	using EventService.Presentation.WebAPI.Exceptions.Middleware;
+	using EventService.Presentation.WebAPI.Validation;
+	using FluentValidation.AspNetCore;
+	using global::Presentation.WebAPI.Tools.Cors.Configuration;
+	using Infrastructure.Configuration;
+	using Microsoft.EntityFrameworkCore;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.OpenApi.Models;
+	using Newtonsoft.Json;
+	using Newtonsoft.Json.Converters;
+	using System.Reflection;
 
 	/// <summary>
 	/// <see cref="Startup"/>
 	/// </summary>
 	public class Startup
 	{
-
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Startup"/> class.
 		/// </summary>
@@ -45,7 +45,6 @@ namespace EventService.Presentation.WebAPI
 		/// The configuration.
 		/// </value>
 		public IConfiguration Configuration { get; }
-
 
 		/// <summary>
 		/// Configures the specified application.
@@ -64,7 +63,7 @@ namespace EventService.Presentation.WebAPI
 
 			app.UseSwaggerUI(options =>
 			{
-				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Team Service API V1");
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Event Service API V1");
 			});
 
 			app.UseRouting();
@@ -74,7 +73,6 @@ namespace EventService.Presentation.WebAPI
 				endpoints.MapControllers();
 			});
 		}
-
 
 		/// <summary>
 		/// Configures the services.
@@ -87,6 +85,7 @@ namespace EventService.Presentation.WebAPI
 			services.RegisterDomainServices();
 			services.RegisterInfrastructureServices();
 			services.RegisterPresentationServices();
+			services.AddCors(this.Configuration);
 
 			services.AddControllers(options =>
 			{
@@ -121,7 +120,7 @@ namespace EventService.Presentation.WebAPI
 				options.SwaggerDoc("v1", new OpenApiInfo
 				{
 					Version = "v1",
-					Title = "Team Service API",
+					Title = "Event Service API",
 				});
 			});
 		}

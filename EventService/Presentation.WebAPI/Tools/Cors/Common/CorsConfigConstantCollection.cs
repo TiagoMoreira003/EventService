@@ -1,4 +1,12 @@
-﻿namespace Presentation.WebAPI.Tools.Cors.Common
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EventServiceException.cs" company="KROWN">
+//     Copyright (c) KROWN. All rights reserved.
+// </copyright>
+// <summary>
+// EventServiceException
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+namespace Presentation.WebAPI.Tools.Cors.Common
 {
 	/// <summary>
 	/// <see cref="CorsConfigConstantCollection"/>
