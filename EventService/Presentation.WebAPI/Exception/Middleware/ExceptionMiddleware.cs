@@ -10,7 +10,8 @@
 namespace EventService.Presentation.WebAPI.Exceptions.Middleware
 {
 	using System.Net;
-	using System.Xml;
+	using EventService.Domain.Exceptions;
+	using EventService.Presentation.WebAPI.Utils;
 	using Newtonsoft.Json;
 	using EventService.Domain.Exceptions;
 	using EventService.Presentation.WebAPI.Utils;
@@ -97,7 +98,7 @@ namespace EventService.Presentation.WebAPI.Exceptions.Middleware
 						Status = context.Response.StatusCode,
 						Message = exception.Message
 					},
-					Newtonsoft.Json.Formatting.None,
+					Formatting.None,
 					new JsonSerializerSettings
 					{
 						NullValueHandling = NullValueHandling.Ignore

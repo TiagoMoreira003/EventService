@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ServiceCollection.cs" company="HumbleBets">
-//     Copyright (c) HumbleBets. All rights reserved.
+// <copyright file="ServiceCollection.cs" company="KROWN">
+//     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // ServiceCollection

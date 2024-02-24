@@ -14,9 +14,10 @@ namespace EventService.Domain.Exceptions
 	using System.Runtime.Serialization;
 
 	/// <summary>
-	/// <see cref="TeamServiceException"/>
+	///   <see cref="EventServiceException" />
 	/// </summary>
-	/// <seealso cref="Exception"/>
+	/// <seealso cref="System.Exception" />
+	/// <seealso cref="Exception" />
 	[Serializable]
 	public class EventServiceException : Exception
 	{
@@ -27,7 +28,7 @@ namespace EventService.Domain.Exceptions
 		private readonly int errorCode;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="TeamServiceException"/> class.
+		/// Initializes a new instance of the <see cref="EventServiceException"/> class.
 		/// </summary>
 		/// <param name="errorCode">The error code.</param>
 		public EventServiceException(int errorCode)
@@ -37,7 +38,7 @@ namespace EventService.Domain.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="TeamServiceException"/> class.
+		/// Initializes a new instance of the <see cref="EventServiceException"/> class.
 		/// </summary>
 		/// <param name="message">The message.</param>
 		/// <param name="errorCode">The error code.</param>
@@ -73,7 +74,7 @@ namespace EventService.Domain.Exceptions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="TeamServiceException"/> class.
+		/// Initializes a new instance of the <see cref="EventServiceException"/> class.
 		/// </summary>
 		/// <param name="info">
 		/// The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the

@@ -9,19 +9,19 @@
 
 namespace EventService.Presentation.WebAPI
 {
-	using System.Reflection;
-	using Domain.Configuration;
-	using EventService.Presentation.WebAPI.Configuration;
+    using System.Reflection;
+    using Domain.Configuration;
+    using EventService.Presentation.WebAPI.Configuration;
+    using FluentValidation.AspNetCore;
+    using Infrastructure.Configuration;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.OpenApi.Models;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using EventService.Presentation.WebAPI.Validation;
+    using EventService.Infrastructure;
 	using EventService.Presentation.WebAPI.Exceptions.Middleware;
-	using FluentValidation.AspNetCore;
-	using Infrastructure.Configuration;
-	using Microsoft.EntityFrameworkCore;
-	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.OpenApi.Models;
-	using Newtonsoft.Json;
-	using Newtonsoft.Json.Converters;
-	using EventService.Presentation.WebAPI.Validation;
-	using EventService.Infrastructure;
 
 	/// <summary>
 	/// <see cref="Startup"/>
