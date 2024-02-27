@@ -1,12 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventServiceException.cs" company="KROWN">
+// <copyright file="CorsConfigConstantCollection.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// EventServiceException
+// CorsConfigConstantCollection
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Presentation.WebAPI.Tools.Cors.Common
+
+namespace EventService.Presentation.WebAPI.Tools.Cors.Common
 {
 	/// <summary>
 	/// <see cref="CorsConfigConstantCollection"/>

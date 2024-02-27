@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ServiceCollection.cs" company="KROWN">
+// <copyright file="Location.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// ServiceCollection
+// Location
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels
@@ -20,13 +20,13 @@ namespace EventService.Domain.AggregateModels
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Location"/> class.
 		/// </summary>
-		/// <param name="latitud">The latitud.</param>
-		/// <param name="longitud">The longitud.</param>
+		/// <param name="latitude">The latitud.</param>
+		/// <param name="longitude">The longitud.</param>
 		/// <param name="address">The address.</param>
-		internal Location(string latitud, string longitud, Address address)
+		internal Location(string latitude, string longitude, Address address)
 		{
-			this.Latitud = latitud;
-			this.Longitud = longitud;
+			this.Latitude = latitude;
+			this.Longitude = longitude;
 			this.Address = address;
 		}
 
@@ -44,7 +44,7 @@ namespace EventService.Domain.AggregateModels
 		/// <value>
 		/// The latitud.
 		/// </value>
-		public string Latitud { get; private set; }
+		public string Latitude { get; private set; }
 
 		/// <summary>
 		/// Gets the longitud.
@@ -52,7 +52,7 @@ namespace EventService.Domain.AggregateModels
 		/// <value>
 		/// The longitud.
 		/// </value>
-		public string Longitud { get; private set; }
+		public string Longitude { get; private set; }
 
 		/// <summary>
 		/// Gets the atomic values.

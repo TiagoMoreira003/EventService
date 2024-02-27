@@ -22,7 +22,7 @@ namespace EventService.Domain.AggregateModels
 		/// </summary>
 		/// <param name="street">The street.</param>
 		/// <param name="state">The state.</param>
-		/// <param name="postalcode">The postalcode.</param>
+		/// <param name="postalCode">The postalcode.</param>
 		public Address(string street, string state, string postalCode)
 		{
 			this.Street = street;
@@ -60,9 +60,7 @@ namespace EventService.Domain.AggregateModels
 		/// <returns></returns>
 		protected override IEnumerable<object> GetAtomicValues()
 		{
-			yield return this.Street;
-			yield return this.State;
-			yield return this.PostalCode;
+			yield return this;
 		}
 	}
 }

@@ -1,14 +1,14 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventServiceException.cs" company="KROWN">
+// <copyright file="CorsInjectionExtension.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// EventServiceException
+// CorsInjectionExtension
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Presentation.WebAPI.Tools.Cors.Configuration
+namespace EventService.Presentation.WebAPI.Tools.Cors.Configuration
 {
-	using Presentation.WebAPI.Tools.Cors.Common;
+	using EventService.Presentation.WebAPI.Tools.Cors.Common;
 
 	/// <summary>
 	/// <see cref="CorsInjectionExtension"/>

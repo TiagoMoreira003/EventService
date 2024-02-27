@@ -28,6 +28,6 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <param name="musictype">The name.</param>
 		/// <param name="location">The acronym.</param>
 		/// <returns></returns>
-		ILocationBuilder NewLocation(string latitud, string longitud, Address address);
+		ILocationBuilder NewLocation(string latitude, string longitude, Address address);
 	}
 }

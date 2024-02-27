@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Location.cs" company="KROWN">
+// <copyright file="LocationBuilder.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// Location
+// LocationBuilder
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		{
 			if (location is null)
 			{
-				throw new InvalidOperationException("The event object is not initialized.");
+				throw new InvalidOperationException("The location object is not initialized.");
 			}
 			return location;
 		}
@@ -42,9 +42,9 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <param name="longitud"></param>
 		/// <param name="address"></param>
 		/// <returns></returns>
-		public ILocationBuilder NewLocation(string latitud, string longitud, Address address)
+		public ILocationBuilder NewLocation(string latitude, string longitude, Address address)
 		{
-			location = new Location(latitud, longitud, address);
+			location = new Location(latitude, longitude, address);
 
 			return this;
 		}
