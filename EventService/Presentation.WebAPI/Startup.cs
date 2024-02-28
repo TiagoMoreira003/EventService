@@ -15,7 +15,7 @@ namespace EventService.Presentation.WebAPI
 	using EventService.Presentation.WebAPI.Exceptions.Middleware;
 	using EventService.Presentation.WebAPI.Validation;
 	using FluentValidation.AspNetCore;
-	using global::Presentation.WebAPI.Tools.Cors.Configuration;
+	using global::EventService.Presentation.WebAPI.Tools.Cors.Configuration;
 	using Infrastructure.Configuration;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.DependencyInjection;
@@ -120,6 +120,7 @@ namespace EventService.Presentation.WebAPI
 				options.SwaggerDoc("v1", new OpenApiInfo
 				{
 					Version = "v1",
+
 					Title = "Event Service API",
 				});
 			});

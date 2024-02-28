@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ServiceCollection.cs" company="KROWN">
+// <copyright file="Address.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// ServiceCollection
+// Address
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels
