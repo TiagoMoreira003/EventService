@@ -60,7 +60,9 @@ namespace EventService.Domain.AggregateModels
 		/// <returns></returns>
 		protected override IEnumerable<object> GetAtomicValues()
 		{
-			yield return this;
+			yield return this.Street;
+			yield return this.State;
+			yield return this.PostalCode;
 		}
 	}
 }

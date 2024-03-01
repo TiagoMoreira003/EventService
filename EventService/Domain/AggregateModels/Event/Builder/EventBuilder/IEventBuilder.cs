@@ -15,7 +15,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 	/// <summary>
 	/// <see cref="IEventBuilder"/>
 	/// </summary>
-	/// <seealso cref="IRepository&lt;Event&gt;" />
+	/// {seealso cref="IRepository{Event}" }
 	public interface IEventBuilder
 	{
 		/// <summary>

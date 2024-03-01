@@ -1420,7 +1420,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ALEXA\\.nuget\\packages\\": {}
+    "C:\\Users\\ALEXA\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -1431,8 +1432,12 @@
       "packagesPath": "C:\\Users\\ALEXA\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ALEXA\\OneDrive\\Ambiente de Trabalho\\Trabalho\\KROWN\\Events-Service\\EventService\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\ALEXA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -6,19 +6,22 @@
 // Location
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+/// <summary>
+///
+/// </summary>
 namespace EventService.Domain.AggregateModels
 {
 	using EventService.Domain.SeedWork;
 	using System.Collections.Generic;
 
 	/// <summary>
-	/// <see cref="Location"/>
+	///   <see cref="Location" />
 	/// </summary>
 	/// <seealso cref="EntityBase" />
 	public class Location : EntityBase
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Location"/> class.
+		/// Initializes a new instance of the <see cref="Location" /> class.
 		/// </summary>
 		/// <param name="latitude">The latitud.</param>
 		/// <param name="longitude">The longitud.</param>
@@ -39,10 +42,10 @@ namespace EventService.Domain.AggregateModels
 		public Address Address { get; private set; }
 
 		/// <summary>
-		/// Gets the latitud.
+		/// Gets the latitude.
 		/// </summary>
 		/// <value>
-		/// The latitud.
+		/// The latitude.
 		/// </value>
 		public string Latitude { get; private set; }
 

@@ -10,7 +10,7 @@
 namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 {
 	/// <summary>
-	/// <see cref="ILocationBuilder"/>
+	///   <see cref="ILocationBuilder" />
 	/// </summary>
 	public interface ILocationBuilder
 	{
@@ -21,12 +21,11 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		Location Build();
 
 		/// <summary>
-		/// Creates new team.
+		/// Creates new location.
 		/// </summary>
-		/// <param name="datetime">The name.</param>
-		/// <param name="artist">The acronym.</param>
-		/// <param name="musictype">The name.</param>
-		/// <param name="location">The acronym.</param>
+		/// <param name="latitude">The latitude.</param>
+		/// <param name="longitude">The longitude.</param>
+		/// <param name="address">The address.</param>
 		/// <returns></returns>
 		ILocationBuilder NewLocation(string latitude, string longitude, Address address);
 	}

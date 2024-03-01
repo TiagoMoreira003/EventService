@@ -26,6 +26,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// Builds this instance.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="System.InvalidOperationException">The location object is not initialized.</exception>
 		public Location Build()
 		{
 			if (location is null)
@@ -36,11 +37,12 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		}
 
 		// <summary>
-		/// Creates new eventlocation.
+		/// <summary>
+		/// Creates new location.
 		/// </summary>
-		/// <param name="latitud"></param>
-		/// <param name="longitud"></param>
-		/// <param name="address"></param>
+		/// <param name="latitude">The latitude.</param>
+		/// <param name="longitude">The longitude.</param>
+		/// <param name="address">The address.</param>
 		/// <returns></returns>
 		public ILocationBuilder NewLocation(string latitude, string longitude, Address address)
 		{
