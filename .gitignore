@@ -43,6 +43,6 @@ results/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-Event-Service/Presentation.WebAPI/obj/project.nuget.cache
+EventService/Presentation.WebAPI/obj/project.nuget.cache
 
-Event-Service/Presentation.WebAPI/obj/project.assets.json
+EventService/Presentation.WebAPI/obj/project.assets.json
