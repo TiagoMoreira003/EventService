@@ -1,4 +1,4 @@
-# Events-Service
+# EventService
 
 This microservice is responsible for the management of the events that are placed by the user
 
