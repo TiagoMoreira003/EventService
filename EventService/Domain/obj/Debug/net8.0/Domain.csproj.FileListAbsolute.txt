@@ -1,0 +1,15 @@
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\bin\Debug\net8.0\EventService.Domain.deps.json
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\bin\Debug\net8.0\EventService.Domain.runtimeconfig.json
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\bin\Debug\net8.0\EventService.Domain.dll
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\bin\Debug\net8.0\EventService.Domain.pdb
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\EventService.Domain.dll
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\refint\EventService.Domain.dll
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\EventService.Domain.pdb
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+C:\Users\ALEXA\OneDrive\Ambiente de Trabalho\Trabalho\KROWN\Events-Service\EventService\Domain\obj\Debug\net8.0\ref\EventService.Domain.dll
