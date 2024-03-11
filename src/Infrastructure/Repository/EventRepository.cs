@@ -11,15 +11,12 @@ namespace EventService.Infrastructure.Repository
 {
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Domain.AggregateModels.Event.Repository;
-	using Microsoft.EntityFrameworkCore;
-	using System;
-	using System.Threading;
-	using System.Threading.Tasks;
 
 	/// <summary>
 	/// <see cref="EventRepository"/>
 	/// </summary>
 	/// <seealso cref="IEventRepository" />
+	/// <seealso cref="GenericRepository{Event}"/>
 	internal class EventRepository : GenericRepository<Event>, IEventRepository
 	{
 		/// <summary>
@@ -29,17 +26,6 @@ namespace EventService.Infrastructure.Repository
 		public EventRepository(EventServiceDBContext context)
 			: base(context)
 		{
-		}
-
-		/// <summary>
-		/// Gets the asynchronous.
-		/// </summary>
-		/// <param name="uuid">The UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
-		public async Task<Event> GetAsync(Guid uuid, CancellationToken cancellationToken)
-		{
-			return await this.Entities.SingleOrDefaultAsync(t => t.UUId == uuid, cancellationToken);
 		}
 	}
 }
