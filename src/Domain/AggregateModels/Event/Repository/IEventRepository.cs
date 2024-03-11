@@ -14,7 +14,7 @@ namespace EventService.Domain.AggregateModels.Event.Repository
 	/// <summary>
 	///   <see cref="IEventRepository" />
 	/// </summary>
-	/// <seealso cref="IRepository{Team}" />
+	/// <seealso cref="IRepository{Event}" />
 	public interface IEventRepository : IRepository<Event>
 	{
 	}
