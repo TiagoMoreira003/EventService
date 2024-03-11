@@ -9,10 +9,12 @@
 
 namespace EventService.Infrastructure.Configuration
 {
+	using EventService.Domain.AggregateModels.Event.Repository;
+	using EventService.Infrastructure.Repository;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
-	/// <see cref="ServiceCollection"/>
+	///   <see cref="ServiceCollection" />
 	/// </summary>
 	public static class ServiceCollection
 	{
@@ -22,7 +24,8 @@ namespace EventService.Infrastructure.Configuration
 		/// <param name="services">The services.</param>
 		public static void RegisterInfrastructureServices(this IServiceCollection services)
 		{
-
+			services.AddScoped<ILocationRepository, LocationRepository>();
+			services.AddScoped<IEventRepository, EventRepository>();
 		}
 	}
 }
