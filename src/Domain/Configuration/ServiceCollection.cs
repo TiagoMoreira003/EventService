@@ -9,6 +9,8 @@
 
 namespace EventService.Domain.Configuration
 {
+	using EventService.Domain.AggregateModels.Event.Builder.EventBuilder;
+	using EventService.Domain.AggregateModels.Event.Builder.LocationBuilder;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -22,6 +24,8 @@ namespace EventService.Domain.Configuration
 		/// <param name="services">The services.</param>
 		public static void RegisterDomainServices(this IServiceCollection services)
 		{
+			services.AddScoped<IEventBuilder, EventBuilder>();
+			services.AddScoped<ILocationBuilder, LocationBuilder>();
 		}
 	}
 }

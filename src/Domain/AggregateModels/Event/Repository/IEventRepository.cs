@@ -10,13 +10,16 @@
 namespace EventService.Domain.AggregateModels.Event.Repository
 {
 	using EventService.Domain.SeedWork;
+	using System;
+	using System.Threading;
+	using System.Threading.Tasks;
 
 	/// <summary>
 	///   <see cref="IEventRepository" />
 	/// </summary>
-	/// <seealso cref="IRepository&lt;Event&gt;" />
 	/// <seealso cref="IRepository{Team}" />
 	public interface IEventRepository : IRepository<Event>
 	{
+		Task<Event> GetAsync(Guid guid, CancellationToken token);
 	}
 }
