@@ -7,15 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using EventService.Domain.SeedWork;
+
 namespace EventService.Domain.AggregateModels.Event.Repository
 {
-	using EventService.Domain.SeedWork;
-
 	/// <summary>
 	///   <see cref="IEventRepository" />
 	/// </summary>
-	/// <seealso cref="IRepository&lt;Event&gt;" />
-	/// <seealso cref="IRepository{Team}" />
+	/// <seealso cref="IRepository{Event}" />
 	public interface IEventRepository : IRepository<Event>
 	{
 	}

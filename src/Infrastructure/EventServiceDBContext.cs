@@ -18,12 +18,14 @@ namespace EventService.Infrastructure
 	using System.Threading.Tasks;
 	using System.Threading;
 	using System;
+    using EventService.Infrastructure.EntityConfiguration;
+    //using Microsoft.EntityFrameworkCore.Design;
 
-	/// <summary>
-	///   <see cref="EventServiceDBContext" />
-	/// </summary>
-	/// <seealso cref="DbContext" />
-	/// <seealso cref="IUnitOfWork" />
+    /// <summary>
+    ///   <see cref="EventServiceDBContext" />
+    /// </summary>
+    /// <seealso cref="DbContext" />
+    /// <seealso cref="IUnitOfWork" />
 	public class EventServiceDBContext : DbContext, IUnitOfWork
 	{
 		/// <summary>
@@ -41,13 +43,13 @@ namespace EventService.Infrastructure
 		/// </summary>
 		private readonly IMediator mediator;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EventServiceDBContext" /> class.
-		/// </summary>
-		/// <param name="configuration">The configuration.</param>
-		/// <param name="mediator">The mediator.</param>
-		/// <param name="options">The options.</param>
-		public EventServiceDBContext(
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventServiceDBContext" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="mediator">The mediator.</param>
+        /// <param name="options">The options.</param>
+        public EventServiceDBContext(
 			IConfiguration configuration,
 			IMediator mediator,
 			DbContextOptions<EventServiceDBContext> options)
@@ -130,7 +132,11 @@ namespace EventService.Infrastructure
 		/// </remarks>
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			var properties = modelBuilder.Model.GetEntityTypes()
+			//add this to do the migration, but it didn't work again :( 
+            modelBuilder.ApplyConfiguration(new EventEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new LocationEntityTypeConfiguration());
+
+            var properties = modelBuilder.Model.GetEntityTypes()
 				.SelectMany(t => t.GetProperties())
 				.Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?));
 

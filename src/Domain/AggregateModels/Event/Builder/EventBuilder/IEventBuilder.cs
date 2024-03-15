@@ -32,6 +32,6 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		/// <param name="musictype">The name.</param>
 		/// <param name="location">The acronym.</param>
 		/// <returns></returns>
-		IEventBuilder NewEvent(DateTime datetime, string artist, MusicType musictype, Location location, string description);
+		IEventBuilder NewEvent(string artist, DateTime datetime, MusicType musictype, Location location, string description);
 	}
 }
