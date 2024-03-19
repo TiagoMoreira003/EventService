@@ -8,10 +8,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels.Event
 {
-	using EventService.Domain.SeedWork;
-	using System;
-	using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using EventService.Domain.SeedWork;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     ///   <see cref="Event" />
@@ -19,27 +18,27 @@ namespace EventService.Domain.AggregateModels.Event
     /// <seealso cref="EntityBase" />
     /// <seealso cref="IAggregateRoot" />
     public class Event : EntityBase, IAggregateRoot
-	{
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="Event" /> class.
         /// </summary>
         /// <param name="artist">The artist.</param>
-        /// <param name="dateTime">The date time.</param>
+        /// <param name="date">The date.</param>
         /// <param name="musicType">Type of the music.</param>
         /// <param name="location">The location.</param>
         /// <param name="description">The description.</param>
-        internal Event(string artist, DateTime dateTime, MusicType musicType, Location location, string description)
-            :this()
-		{
-			this.DateTime = dateTime;
-			this.Artist = artist;
-			this.MusicType = musicType;
-			this.Location = location;
-			this.Description = description;
-		}
+        internal Event(string artist, DateTime date, MusicType musicType, Location location, string description)
+            : this()
+        {
+            this.Date = date;
+            this.Artist = artist;
+            this.MusicType = musicType;
+            this.Location = location;
+            this.Description = description;
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event"/> class.
+        /// Initializes a new instance of the <see cref="Event" /> class.
         /// </summary>
         protected Event()
             : base()
@@ -60,7 +59,7 @@ namespace EventService.Domain.AggregateModels.Event
         /// <value>
         /// The date time.
         /// </value>
-        public DateTime DateTime { get; private set; }
+        public DateTime Date { get; private set; }
 
         /// <summary>
         /// Gets the description.
@@ -91,8 +90,8 @@ namespace EventService.Domain.AggregateModels.Event
         /// </summary>
         /// <returns></returns>
         protected override IEnumerable<object> GetAtomicValues()
-		{
-			yield return this.UUId;
-		}
-	}
+        {
+            yield return this.UUId;
+        }
+    }
 }

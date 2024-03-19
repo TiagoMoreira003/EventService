@@ -9,15 +9,21 @@
 
 namespace EventService.Infrastructure.EntityConfiguration
 {
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using EventService.Domain.AggregateModels.Event;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+    /// <summary>
+    ///   <see cref="LocationEntityTypeConfiguration" />
+    /// </summary>
+    /// <seealso cref="EntityTypeConfiguration{Location}"/>
     internal class LocationEntityTypeConfiguration : EntityTypeConfiguration<Location>
     {
         /// <summary>
         /// Gets the name of the table.
         /// </summary>
-        /// <value>The name of the table.</value>
+        /// <value>
+        /// The name of the table.
+        /// </value>
         protected override string TableName => "Location";
 
         /// <summary>
@@ -30,7 +36,6 @@ namespace EventService.Infrastructure.EntityConfiguration
                 .IsRequired();
             builder.Property(t => t.Longitude)
                 .IsRequired();
-            //Implementação do address, estava mal feita
             builder.OwnsOne(t => t.Address, a =>
             {
                 a.Property(t => t.Street)

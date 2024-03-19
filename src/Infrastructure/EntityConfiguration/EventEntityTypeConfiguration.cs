@@ -9,15 +9,22 @@
 
 namespace EventService.Infrastructure.EntityConfiguration
 {
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using EventService.Domain.AggregateModels.Event;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    /// <summary>
+    ///   <see cref="EventEntityTypeConfiguration" />
+    /// </summary>
+    /// <seealso cref="EntityTypeConfiguration{Event}"/>
 
     internal class EventEntityTypeConfiguration : EntityTypeConfiguration<Event>
     {
         /// <summary>
         /// Gets the name of the table.
         /// </summary>
-        /// <value>The name of the table.</value>
+        /// <value>
+        /// The name of the table.
+        /// </value>
         protected override string TableName => "Event";
 
         /// <summary>
@@ -29,7 +36,7 @@ namespace EventService.Infrastructure.EntityConfiguration
             builder.Property(t => t.Artist)
                 .HasMaxLength(50)
                 .IsRequired();
-            builder.Property(t => t.DateTime)
+            builder.Property(t => t.Date)
                 .IsRequired();
             builder.Property(t => t.MusicType)
                 .IsRequired();
