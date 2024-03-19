@@ -15,7 +15,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
     /// <summary>
     /// <see cref="IEventBuilder"/>
     /// </summary>
-    /// {seealso cref="IRepository{Event}" }
+
     public interface IEventBuilder
     {
         /// <summary>
@@ -25,12 +25,12 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
         Event Build();
 
         /// <summary>
-        /// Creates new team.
+        /// Creates new event.
         /// </summary>
-        /// <param name="artist">The acronym.</param>
+        /// <param name="artist">The artist.</param>
         /// <param name="date">The date.</param>
-        /// <param name="musictype">The name.</param>
-        /// <param name="location">The acronym.</param>
+        /// <param name="musictype">The musicType.</param>
+        /// <param name="location">The location.</param>
         /// <param name="description">The description.</param>
         /// <returns></returns>
         IEventBuilder NewEvent(string artist, DateTime date, MusicType musictype, Location location, string description);

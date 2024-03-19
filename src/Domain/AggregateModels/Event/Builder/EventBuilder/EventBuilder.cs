@@ -7,19 +7,19 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+
 namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 {
-    using System;
-
     /// <summary>
-    ///   <see cref="IEventBuilder" />
+    ///   <see cref="EventBuilder" />
     /// </summary>
     /// <seealso cref="IEventBuilder" />
 
     internal class EventBuilder : IEventBuilder
     {
         /// <summary>
-        /// The team
+        /// The event
         /// </summary>
         private Event Event;
 
@@ -39,11 +39,11 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
         /// <summary>
         /// Creates new event.
         /// </summary>
-        /// <param name="artist">The acronym.</param>
-        /// <param name="date"></param>
-        /// <param name="musicType"></param>
-        /// <param name="location">The acronym.</param>
-        /// <param name="description"></param>
+        /// <param name="artist">The artist.</param>
+        /// <param name="date">The date</param>
+        /// <param name="musicType">The musicType</param>
+        /// <param name="location">The location.</param>
+        /// <param name="description">The description</param>
         /// <returns></returns>
         public IEventBuilder NewEvent(string artist, DateTime date, MusicType musicType, Location location, string description)
         {
