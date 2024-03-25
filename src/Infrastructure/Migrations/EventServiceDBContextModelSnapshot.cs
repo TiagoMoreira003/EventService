@@ -9,135 +9,135 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventService.Infrastructure.Migrations
 {
-    [DbContext(typeof(EventServiceDBContext))]
-    partial class EventServiceDBContextModelSnapshot : ModelSnapshot
-    {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
+	[DbContext(typeof(EventServiceDBContext))]
+	partial class EventServiceDBContextModelSnapshot : ModelSnapshot
+	{
+		protected override void BuildModel(ModelBuilder modelBuilder)
+		{
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+			modelBuilder
+				.HasAnnotation("ProductVersion", "7.0.3")
+				.HasAnnotation("Proxies:ChangeTracking", false)
+				.HasAnnotation("Proxies:CheckEquality", false)
+				.HasAnnotation("Proxies:LazyLoading", true)
+				.HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Event", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+			modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Event", b =>
+				{
+					b.Property<long>("Id")
+						.ValueGeneratedOnAdd()
+						.HasColumnType("bigint");
 
-                    b.Property<string>("Artist")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+					b.Property<string>("Artist")
+						.IsRequired()
+						.HasMaxLength(50)
+						.HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime(6)");
+					b.Property<DateTime>("CreationDate")
+						.HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime(6)");
+					b.Property<DateTime>("DateTime")
+						.HasColumnType("datetime(6)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+					b.Property<string>("Description")
+						.IsRequired()
+						.HasMaxLength(300)
+						.HasColumnType("varchar(300)");
 
-                    b.Property<long?>("LocationId")
-                        .HasColumnType("bigint");
+					b.Property<long?>("LocationId")
+						.HasColumnType("bigint");
 
-                    b.Property<DateTime>("ModificationDate")
-                        .IsConcurrencyToken()
-                        .HasColumnType("datetime(6)");
+					b.Property<DateTime>("ModificationDate")
+						.IsConcurrencyToken()
+						.HasColumnType("datetime(6)");
 
-                    b.Property<int>("MusicType")
-                        .HasColumnType("int");
+					b.Property<int>("MusicType")
+						.HasColumnType("int");
 
-                    b.Property<Guid>("UUId")
-                        .HasColumnType("char(36)");
+					b.Property<Guid>("UUId")
+						.HasColumnType("char(36)");
 
-                    b.HasKey("Id");
+					b.HasKey("Id");
 
-                    b.HasIndex("LocationId");
+					b.HasIndex("LocationId");
 
-                    b.HasIndex("UUId")
-                        .IsUnique();
+					b.HasIndex("UUId")
+						.IsUnique();
 
-                    b.ToTable("Event", (string)null);
-                });
+					b.ToTable("Event", (string)null);
+				});
 
-            modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Location", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+			modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Location", b =>
+				{
+					b.Property<long>("Id")
+						.ValueGeneratedOnAdd()
+						.HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime(6)");
+					b.Property<DateTime>("CreationDate")
+						.HasColumnType("datetime(6)");
 
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+					b.Property<string>("Latitude")
+						.IsRequired()
+						.HasColumnType("longtext");
 
-                    b.Property<string>("Longitude")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+					b.Property<string>("Longitude")
+						.IsRequired()
+						.HasColumnType("longtext");
 
-                    b.Property<DateTime>("ModificationDate")
-                        .IsConcurrencyToken()
-                        .HasColumnType("datetime(6)");
+					b.Property<DateTime>("ModificationDate")
+						.IsConcurrencyToken()
+						.HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UUId")
-                        .HasColumnType("char(36)");
+					b.Property<Guid>("UUId")
+						.HasColumnType("char(36)");
 
-                    b.HasKey("Id");
+					b.HasKey("Id");
 
-                    b.HasIndex("UUId")
-                        .IsUnique();
+					b.HasIndex("UUId")
+						.IsUnique();
 
-                    b.ToTable("Location", (string)null);
-                });
+					b.ToTable("Location", (string)null);
+				});
 
-            modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Event", b =>
-                {
-                    b.HasOne("EventService.Domain.AggregateModels.Event.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId");
+			modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Event", b =>
+				{
+					b.HasOne("EventService.Domain.AggregateModels.Event.Location", "Location")
+						.WithMany()
+						.HasForeignKey("LocationId");
 
-                    b.Navigation("Location");
-                });
+					b.Navigation("Location");
+				});
 
-            modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Location", b =>
-                {
-                    b.OwnsOne("EventService.Domain.AggregateModels.Address", "Address", b1 =>
-                        {
-                            b1.Property<long>("LocationId")
-                                .HasColumnType("bigint");
+			modelBuilder.Entity("EventService.Domain.AggregateModels.Event.Location", b =>
+				{
+					b.OwnsOne("EventService.Domain.AggregateModels.Address", "Address", b1 =>
+						{
+							b1.Property<long>("LocationId")
+								.HasColumnType("bigint");
 
-                            b1.Property<string>("PostalCode")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+							b1.Property<string>("PostalCode")
+								.IsRequired()
+								.HasColumnType("longtext");
 
-                            b1.Property<string>("State")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+							b1.Property<string>("State")
+								.IsRequired()
+								.HasColumnType("longtext");
 
-                            b1.Property<string>("Street")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+							b1.Property<string>("Street")
+								.IsRequired()
+								.HasColumnType("longtext");
 
-                            b1.HasKey("LocationId");
+							b1.HasKey("LocationId");
 
-                            b1.ToTable("Location");
+							b1.ToTable("Location");
 
-                            b1.WithOwner()
-                                .HasForeignKey("LocationId");
-                        });
+							b1.WithOwner()
+								.HasForeignKey("LocationId");
+						});
 
-                    b.Navigation("Address");
-                });
+					b.Navigation("Address");
+				});
 #pragma warning restore 612, 618
-        }
-    }
+		}
+	}
 }

@@ -27,6 +27,6 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 		/// <param name="longitude">The longitude.</param>
 		/// <param name="address">The address.</param>
 		/// <returns></returns>
-		ILocationBuilder NewLocation(string latitude, string longitude, Address address);
+		ILocationBuilder NewLocation(double latitude, double longitude, Address address);
 	}
 }
