@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Event.cs" company="KROWN">
-//     Copyright (c) KROWN. All rights reserved.
+// Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // Event
@@ -98,16 +98,16 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <exception cref="EventService.Domain.Exceptions.DuplicatedException">The	Artist {artists} already exists.</exception>
 		/// <exception cref="ArgumentNullException">artists - The Artists is null.</exception>
 		/// <exception cref="DuplicatedException">The Artist {artists} already exists.</exception>
-		public void AddArtists(string artists)
+		public void AddArtist(string artists)
 		{
-			if (artists == null)
+			if (string.IsNullOrEmpty(artists))
 			{
 				throw new ArgumentNullException(nameof(artists), "The Artists is null.");
 			}
 
 			if (this.ArtistExists(artists.Artists))
 			{
-				throw new DuplicatedException($"The	Artist {artists} already exists.");
+				throw new DuplicatedException($"The Artist {artists} already exists.");
 			}
 
 			this.artists.Add(artists);

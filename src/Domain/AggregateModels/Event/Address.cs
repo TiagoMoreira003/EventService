@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Address.cs" company="KROWN">
-//     Copyright (c) KROWN. All rights reserved.
+// Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // Address
