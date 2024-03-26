@@ -39,11 +39,14 @@ namespace EventService.Infrastructure.EntityConfiguration
 			builder.OwnsOne(t => t.Address, a =>
 			{
 				a.Property(t => t.Street)
-					.IsRequired();
+					.IsRequired()
+					.HasMaxLength(50);
 				a.Property(t => t.State)
-					.IsRequired();
+					.IsRequired()
+					.HasMaxLength(30);
 				a.Property(t => t.PostalCode)
-					.IsRequired();
+					.IsRequired()
+					.HasMaxLength(20);
 			});
 		}
 	}

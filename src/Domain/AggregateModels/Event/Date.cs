@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Date.cs" company="KROWN">
-//     Copyright (c) KROWN. All rights reserved.
+// Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // Address
@@ -13,13 +13,13 @@ namespace EventService.Domain.AggregateModels
 	using System.Collections.Generic;
 
 	/// <summary>
-	///   <see cref="Date" />
+	/// <see cref="Date" />
 	/// </summary>
 	/// <seealso cref="ValueObject" />
 	public class Date : ValueObject
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Address" /> class.
+		/// Initializes a new instance of the <see cref="Date" /> class.
 		/// </summary>
 		/// <param name="startDate">The startdate.</param>
 		/// <param name="endDate">The enddate.</param>
@@ -30,18 +30,18 @@ namespace EventService.Domain.AggregateModels
 		}
 
 		/// <summary>
-		/// Gets the street.
+		/// Gets the EndDate.
 		/// </summary>
 		/// <value>
-		/// The street.
+		/// The EndDate.
 		/// </value>
 		public DateTime EndDate { get; private set; }
 
 		/// <summary>
-		/// Gets the state.
+		/// Gets the StartDate.
 		/// </summary>
 		/// <value>
-		/// The state.
+		/// The StartDate.
 		/// </value>
 		public DateTime StartDate { get; private set; }
 

@@ -33,9 +33,7 @@ namespace EventService.Infrastructure.EntityConfiguration
 		/// <param name="builder">The builder.</param>
 		protected override void ConfigureEntity(EntityTypeBuilder<Event> builder)
 		{
-			builder.Property(t => t.Artists)
-				.HasMaxLength(50)
-				.IsRequired();
+			builder.HasMany(f => f.Artists);
 			builder.Property(t => t.Date)
 				.IsRequired();
 			builder.Property(t => t.MusicType)
