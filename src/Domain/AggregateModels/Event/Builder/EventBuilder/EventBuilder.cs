@@ -13,7 +13,7 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 	using System.Collections.Generic;
 
 	/// <summary>
-	/// <see cref="EventBuilder" />
+	///		<see cref="EventBuilder" />
 	/// </summary>
 	/// <seealso cref="IEventBuilder" />
 
