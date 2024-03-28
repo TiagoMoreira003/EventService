@@ -10,13 +10,21 @@
 namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 {
 	using EventService.Domain.AggregateModels.Event;
+	using System.Collections.Generic;
 
 	/// <summary>
-	///   <see cref="IEventBuilder" />
+	/// <see cref="IEventBuilder" />
 	/// </summary>
 
 	public interface IEventBuilder
 	{
+		/// <summary>
+		/// Adds the artist.
+		/// </summary>
+		/// <param name="artists">The artists.</param>
+		/// <returns></returns>
+		IEventBuilder AddArtist(List<string> artists);
+
 		/// <summary>
 		/// Builds this instance.
 		/// </summary>

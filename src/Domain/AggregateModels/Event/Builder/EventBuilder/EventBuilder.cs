@@ -7,12 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
 namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 {
+	using System;
+	using System.Collections.Generic;
+
 	/// <summary>
-	///   <see cref="EventBuilder" />
+	/// <see cref="EventBuilder" />
 	/// </summary>
 	/// <seealso cref="IEventBuilder" />
 
@@ -24,10 +25,24 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		private Event Event;
 
 		/// <summary>
+		/// Adds the artist.
+		/// </summary>
+		/// <param name="artists">The artists.</param>
+		/// <returns></returns>
+		public IEventBuilder AddArtist(List<string> artists)
+		{
+			foreach (var artist in artists)
+			{
+				this.Event.AddArtist(artist);
+			}
+			return this;
+		}
+
+		/// <summary>
 		/// Builds this instance.
 		/// </summary>
 		/// <returns></returns>
-		/// <exception cref="System.InvalidOperationException">The event object is not initialized.</exception>
+		/// <exception cref="InvalidOperationException">The event object is not initialized.</exception>
 		public Event Build()
 		{
 			if (Event is null)

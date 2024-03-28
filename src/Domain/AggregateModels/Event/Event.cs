@@ -93,24 +93,37 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <summary>
 		/// Adds the artists.
 		/// </summary>
-		/// <param name="artists">The artists.</param>
-		/// <exception cref="System.ArgumentNullException">artists - The Artists is null.</exception>
-		/// <exception cref="EventService.Domain.Exceptions.DuplicatedException">The	Artist {artists} already exists.</exception>
+		/// <param name="artistName">Name of the artist.</param>
 		/// <exception cref="ArgumentNullException">artists - The Artists is null.</exception>
 		/// <exception cref="DuplicatedException">The Artist {artists} already exists.</exception>
-		public void AddArtist(string artists)
+		//public void AddArtist(string artists)
+		//{
+		//	if (string.IsNullOrEmpty(artists))
+		//	{
+		//		throw new ArgumentNullException(nameof(artists), "The Artists is null.");
+		//	}
+
+		//	if (this.ArtistExists(artistName))
+		//	{
+		//		throw new DuplicatedException($"The Artist {artists} already exists.");
+		//	}
+
+		//	this.artists.Add(artists);
+		//}
+
+		public void AddArtist(string artistName)
 		{
-			if (string.IsNullOrEmpty(artists))
+			if (string.IsNullOrEmpty(artistName))
 			{
-				throw new ArgumentNullException(nameof(artists), "The Artists is null.");
+				throw new ArgumentNullException(nameof(artistName), "The artist name is null.");
 			}
 
-			if (this.ArtistExists(artists.Artists))
+			if (this.ArtistExists(artistName))
 			{
-				throw new DuplicatedException($"The Artist {artists} already exists.");
+				throw new DuplicatedException($"The Artist {artistName} already exists.");
 			}
 
-			this.artists.Add(artists);
+			this.artists.Add(artistName);
 		}
 
 		/// <summary>
@@ -125,11 +138,17 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <summary>
 		/// Artists the exists.
 		/// </summary>
-		/// <param name="artists">The artists.</param>
+		/// <param name="artist">The artist.</param>
 		/// <returns></returns>
-		private bool ArtistExists(string artists)
+		//private bool ArtistExists(string artists)
+		//{
+		//	return this.artists.Exists(x => x.Artists == artists);
+		//}
+
+		private bool ArtistExists(string artist)
 		{
-			return this.artists.Exists(x => x.Artists == artists);
+			// Assumindo que this.artists é uma List<string>
+			return this.artists.Exists(x => x == artist);
 		}
 	}
 }
