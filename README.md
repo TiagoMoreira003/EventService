@@ -11,7 +11,9 @@ This microservice is responsible for the management of the events that are place
 
 
 ## Domain
-![imagem_2024-02-24_223842244](https://github.com/Krownofficial/EventService/assets/152023671/943bf015-ab42-4715-9c11-a3780ac6dd2e)
+![event domain](https://github.com/Krownofficial/EventService/assets/126164146/f0ba3948-1646-4349-a444-9f445cce0a6a)
+
+
 
 ## Features
  - Create an event
