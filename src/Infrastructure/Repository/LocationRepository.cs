@@ -9,7 +9,7 @@
 
 namespace EventService.Infrastructure.Repository
 {
-	using EventService.Domain.AggregateModels;
+	using EventService.Domain.AggregateModels.Event;
 	using EventService.Domain.AggregateModels.Event.Repository;
 
 	/// <summary>
