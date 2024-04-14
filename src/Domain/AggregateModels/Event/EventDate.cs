@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventDate2.cs" company="KROWN">
+// <copyright file="EventDate.cs" company="KROWN">
 // Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>

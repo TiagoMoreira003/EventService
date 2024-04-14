@@ -87,7 +87,7 @@ namespace EventService.Presentation.WebAPI.Commands.CreateEventCommand
 
 			if (newevent is not null)
 			{
-				throw new DuplicatedException($"The event with that owner, location and date is duplicated");
+				throw new DuplicatedException($"The tenant with id {request.TenantId} already has an event at {request.GeoCoordinates.Latitude} and {request.GeoCoordinates.Longitude}, from {request.EventDate.StartDate} to  {request.EventDate.EndDate}");
 			}
 
 			var location = this.locationBuilder.NewLocationWithoutAddress(request.GeoCoordinates.Latitude, request.GeoCoordinates.Longitude).Build();

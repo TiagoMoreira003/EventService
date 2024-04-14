@@ -46,9 +46,9 @@ namespace EventService.Presentation.WebAPI.Controllers
 		}
 
 		/// <summary>
-		/// Creates the team asynchronous.
+		/// Creates the event asynchronous.
 		/// </summary>
-		/// <param name="createEventDto">The create team dto.</param>
+		/// <param name="createEventDto">The create event dto.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
 		[HttpPost]
