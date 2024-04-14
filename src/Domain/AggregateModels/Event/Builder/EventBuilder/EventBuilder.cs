@@ -55,14 +55,30 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		/// <summary>
 		/// Creates new event.
 		/// </summary>
-		/// <param name="date">The date</param>
+		/// <param name="eventDate">The date</param>
 		/// <param name="musicType">The musicType</param>
 		/// <param name="location">The location.</param>
 		/// <param name="description">The description</param>
+		/// <param name="tenantId">The tenant identifier.</param>
+		/// <param name="name">The name.</param>
 		/// <returns></returns>
-		public IEventBuilder NewEvent(Date date, MusicType musicType, Location location, string description)
+		public IEventBuilder NewEvent(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name)
 		{
-			Event = new Event(date, musicType, location, description);
+			Event = new Event(eventDate, musicType, location, description, tenantId, name);
+
+			return this;
+		}
+
+		/// <summary>
+		/// Creates new eventidentifier.
+		/// </summary>
+		/// <param name="eventDate">The event date.</param>
+		/// <param name="location">The location.</param>
+		/// <param name="tenantId">The tenant identifier.</param>
+		/// <returns></returns>
+		public IEventBuilder NewEventIdentifier(EventDate eventDate, Location location, Guid tenantId)
+		{
+			Event = new Event(eventDate, location, tenantId);
 
 			return this;
 		}

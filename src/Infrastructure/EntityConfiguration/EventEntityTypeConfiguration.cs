@@ -34,7 +34,7 @@ namespace EventService.Infrastructure.EntityConfiguration
 		protected override void ConfigureEntity(EntityTypeBuilder<Event> builder)
 		{
 			builder.HasMany(f => f.Artists);
-			builder.Property(t => t.Date)
+			builder.Property(t => t.EventDate)
 				.IsRequired();
 			builder.Property(t => t.MusicType)
 				.IsRequired();

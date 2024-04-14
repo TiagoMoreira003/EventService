@@ -31,6 +31,13 @@ namespace EventService.Domain.AggregateModels.Event
 			this.Address = address;
 		}
 
+		internal Location(double latitude, double longitude)
+			: this()
+		{
+			this.Latitude = latitude;
+			this.Longitude = longitude;
+		}
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Location" /> class.
 		/// </summary>

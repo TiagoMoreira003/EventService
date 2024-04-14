@@ -50,5 +50,18 @@ namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 
 			return this;
 		}
+
+		/// <summary>
+		/// Creates new locationwithoutaddress.
+		/// </summary>
+		/// <param name="latitude">The latitude.</param>
+		/// <param name="longitude">The longitude.</param>
+		/// <returns></returns>
+		public ILocationBuilder NewLocationWithoutAddress(double latitude, double longitude)
+		{
+			location = new Location(latitude, longitude);
+
+			return this;
+		}
 	}
 }

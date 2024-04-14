@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Date.cs" company="KROWN">
+// <copyright file="EventDate2.cs" company="KROWN">
 // Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// Address
+// EventDate
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels
@@ -16,14 +16,14 @@ namespace EventService.Domain.AggregateModels
 	/// <see cref="Date" />
 	/// </summary>
 	/// <seealso cref="ValueObject" />
-	public class Date : ValueObject
+	public class EventDate : ValueObject
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Date" /> class.
 		/// </summary>
 		/// <param name="startDate">The startdate.</param>
 		/// <param name="endDate">The enddate.</param>
-		public Date(DateTime startDate, DateTime endDate)
+		public EventDate(DateTime startDate, DateTime endDate)
 		{
 			this.StartDate = startDate;
 			this.EndDate = endDate;
