@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddressDto.cs" company="KROWN">
+// <copyright file="AddressOutputDto.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// AddressDto
+// AddressOutputDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace EventService.Presentation.WebAPI.Dto.Output
 {
 	/// <summary>
-	/// <see cref="AddressDto"/>
+	/// <see cref="AddressOutputDto"/>
 	/// </summary>
-	public class AddressDto
+	public class AddressOutputDto
 	{
 		/// <summary>
 		/// Gets the postal code.

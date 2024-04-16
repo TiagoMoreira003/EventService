@@ -98,7 +98,7 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <value>
 		/// The location.
 		/// </value>
-		public virtual Location Location { get; private set; }
+		public Location Location { get; private set; }
 
 		/// <summary>
 		/// Gets the type of the music.
@@ -144,6 +144,20 @@ namespace EventService.Domain.AggregateModels.Event
 			}
 
 			this.artists.Add(artist);
+		}
+
+		/// <summary>
+		/// Adds the details.
+		/// </summary>
+		/// <param name="musicType">Type of the music.</param>
+		/// <param name="description">The description.</param>
+		/// <param name="name">The name.</param>
+		public void AddDetails(MusicType musicType, string description, string name, Address address)
+		{
+			this.MusicType = musicType;
+			this.Description = description;
+			this.Name = name;
+			this.Location.AddAddress(address);
 		}
 
 		/// <summary>

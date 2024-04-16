@@ -1,26 +1,34 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventDto.cs" company="KROWN">
+// <copyright file="AddDetailsDto.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// EventDto
+// AddDetailsDto
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace EventService.Presentation.WebAPI.Dto.Output
+using EventService.Domain.AggregateModels;
+
+namespace EventService.Presentation.WebAPI.Dto.Input
 {
 	/// <summary>
-	/// <see cref="EventDto"/>
+	/// <see cref="AddDetailsDto"/>
 	/// </summary>
-	public class EventDto
+	public class AddDetailsEventDto
 	{
+		public List<string> Artists { get; init; }
+
+		public string Description { get; init; }
+
 		/// <summary>
 		/// Gets the date event.
 		/// </summary>
 		/// <value>
 		/// The date event.
 		/// </value>
-		public EventDateOutputDto EventDate { get; init; }
+		public EventDateDto EventDate { get; init; }
+
+		public Guid EventId { get; init; }
 
 		/// <summary>
 		/// Gets the geo coordinates.
@@ -28,7 +36,11 @@ namespace EventService.Presentation.WebAPI.Dto.Output
 		/// <value>
 		/// The geo coordinates.
 		/// </value>
-		public LocationOutputDto Location { get; init; }
+		public LocationDto Location { get; init; }
+
+		public MusicType MusicType { get; init; }
+
+		public string Name { get; init; }
 
 		/// <summary>
 		/// Gets the tenant identifier.
@@ -37,13 +49,5 @@ namespace EventService.Presentation.WebAPI.Dto.Output
 		/// The tenant identifier.
 		/// </value>
 		public Guid TenantId { get; init; }
-
-		/// <summary>
-		/// Gets the uu identifier.
-		/// </summary>
-		/// <value>
-		/// The uu identifier.
-		/// </value>
-		public Guid UUId { get; init; }
 	}
 }

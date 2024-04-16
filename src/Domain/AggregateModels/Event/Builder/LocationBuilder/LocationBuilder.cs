@@ -7,10 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
 namespace EventService.Domain.AggregateModels.Event.Builder.LocationBuilder
 {
+	using System;
+
 	/// <summary>
 	///   <see cref="LocationBuilder" />
 	/// </summary>

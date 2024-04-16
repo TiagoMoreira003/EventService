@@ -40,21 +40,15 @@ namespace EventService.Presentation.WebAPI.Commands.CreateEventCommand
 		private readonly ILocationBuilder locationBuilder;
 
 		/// <summary>
-		/// The location repository
-		/// </summary>
-		private readonly ILocationRepository locationRepository;
-
-		/// <summary>
 		/// Initializes a new instance of the <see cref="CreateEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
 		/// <param name="eventBuilder">The event builder.</param>
-		public CreateEventCommandHandler(IEventRepository eventRepository, IEventBuilder eventBuilder)
+		public CreateEventCommandHandler(IEventRepository eventRepository, IEventBuilder eventBuilder, ILocationBuilder locationBuilder)
 		{
 			this.eventRepository = eventRepository;
 			this.eventBuilder = eventBuilder;
 			this.locationBuilder = locationBuilder;
-			this.locationRepository = locationRepository;
 		}
 
 		/// <summary>
@@ -100,11 +94,7 @@ namespace EventService.Presentation.WebAPI.Commands.CreateEventCommand
 
 			await this.eventRepository.AddAsync(newevent, cancellationToken);
 
-			await this.locationRepository.AddAsync(location, cancellationToken);
-
 			await this.eventRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
-
-			await this.locationRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
 
 			return newevent;
 		}

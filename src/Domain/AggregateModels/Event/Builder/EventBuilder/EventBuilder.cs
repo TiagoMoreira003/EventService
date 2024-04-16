@@ -65,7 +65,6 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		public IEventBuilder NewEvent(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name)
 		{
 			Event = new Event(eventDate, musicType, location, description, tenantId, name);
-
 			return this;
 		}
 

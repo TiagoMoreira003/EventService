@@ -11,6 +11,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 {
 	using AutoMapper;
 	using EventService.Domain.AggregateModels.Event;
+	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
 	using EventService.Presentation.WebAPI.Dto.Output;
@@ -43,6 +44,27 @@ namespace EventService.Presentation.WebAPI.Controllers
 		{
 			this.mapper = mapper;
 			this.mediator = mediator;
+		}
+
+		[HttpPut("{eventId}")]
+		public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
+		{
+			Event EventDetails = await this.mediator.Send(new AddDetailsEventCommand
+			{
+				MusicType = addDetailsEventDto.MusicType,
+				Description = addDetailsEventDto.Description,
+				Name = addDetailsEventDto.Name,
+				Artists = addDetailsEventDto.Artists,
+				Address = new AddressDto
+				{
+					Street = addDetailsEventDto.Location.Address.Street,
+					State = addDetailsEventDto.Location.Address.State,
+					PostalCode = addDetailsEventDto.Location.Address.PostalCode,
+				},
+				eventId = eventId,
+			});
+
+			return this.Ok(this.mapper.Map<EventDetailsDto>(EventDetails));
 		}
 
 		/// <summary>

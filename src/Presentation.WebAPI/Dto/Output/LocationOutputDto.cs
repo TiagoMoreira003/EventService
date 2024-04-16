@@ -10,11 +10,11 @@
 namespace EventService.Presentation.WebAPI.Dto.Output
 {
 	/// <summary>
-	/// <see cref="LocationDto"/>
+	/// <see cref="LocationOutputDto"/>
 	/// </summary>
-	public class LocationDto
+	public class LocationOutputDto
 	{
-		public AddressDto Address { get; init; }
+		public AddressOutputDto Address { get; init; }
 
 		/// <summary>
 		/// Gets the latitude.
