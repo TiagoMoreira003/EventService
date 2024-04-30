@@ -38,11 +38,11 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 
 		public async Task<Event> Handle(AddDetailsEventCommand request, CancellationToken cancellationToken)
 		{
-			Event existingEvent = await this.eventRepository.GetAsync(request.eventId, cancellationToken);
+			Event existingEvent = await this.eventRepository.GetAsync(request.EventId, cancellationToken);
 
 			if (existingEvent is null)
 			{
-				throw new NotFoundException($"The event with {request.eventId} does not exist");
+				throw new NotFoundException($"The event with {request.EventId} does not exist");
 			}
 
 			existingEvent.AddDetails(

@@ -61,7 +61,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 					State = addDetailsEventDto.Location.Address.State,
 					PostalCode = addDetailsEventDto.Location.Address.PostalCode,
 				},
-				eventId = eventId,
+				EventId = eventId,
 			});
 
 			return this.Ok(this.mapper.Map<EventDetailsDto>(EventDetails));

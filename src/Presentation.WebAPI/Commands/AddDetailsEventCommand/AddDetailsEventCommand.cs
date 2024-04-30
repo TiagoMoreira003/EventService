@@ -44,7 +44,13 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 		/// </value>
 		public string Description { get; init; }
 
-		public Guid eventId { get; init; }
+		/// <summary>
+		/// Gets the event identifier.
+		/// </summary>
+		/// <value>
+		/// The event identifier.
+		/// </value>
+		public Guid EventId { get; init; }
 
 		/// <summary>
 		/// Gets the location.

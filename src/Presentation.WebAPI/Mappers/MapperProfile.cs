@@ -28,6 +28,7 @@ namespace EventService.Presentation.WebAPI.Mappers
 			this.CreateMap<Event, EventDto>();
 			this.CreateMap<Location, LocationOutputDto>();
 			this.CreateMap<EventDate, EventDateOutputDto>();
+			this.CreateMap<Event, EventDetailsDto>();
 		}
 	}
 }

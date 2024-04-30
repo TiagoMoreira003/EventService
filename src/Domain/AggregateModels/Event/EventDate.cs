@@ -13,13 +13,13 @@ namespace EventService.Domain.AggregateModels
 	using System.Collections.Generic;
 
 	/// <summary>
-	/// <see cref="Date" />
+	/// <see cref="EventDate" />
 	/// </summary>
 	/// <seealso cref="ValueObject" />
 	public class EventDate : ValueObject
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Date" /> class.
+		/// Initializes a new instance of the <see cref="EventDate" /> class.
 		/// </summary>
 		/// <param name="startDate">The startdate.</param>
 		/// <param name="endDate">The enddate.</param>

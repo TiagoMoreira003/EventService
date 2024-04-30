@@ -39,13 +39,10 @@ namespace EventService.Infrastructure.EntityConfiguration
 			builder.OwnsOne(t => t.Address, a =>
 			{
 				a.Property(t => t.Street)
-					.IsRequired()
 					.HasMaxLength(50);
 				a.Property(t => t.State)
-					.IsRequired()
 					.HasMaxLength(30);
 				a.Property(t => t.PostalCode)
-					.IsRequired()
 					.HasMaxLength(20);
 			});
 		}
