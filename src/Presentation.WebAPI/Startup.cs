@@ -13,9 +13,9 @@ namespace EventService.Presentation.WebAPI
 	using EventService.Infrastructure;
 	using EventService.Presentation.WebAPI.Configuration;
 	using EventService.Presentation.WebAPI.Exceptions.Middleware;
+	using EventService.Presentation.WebAPI.Tools.Cors.Configuration;
 	using EventService.Presentation.WebAPI.Validation;
 	using FluentValidation.AspNetCore;
-	using global::EventService.Presentation.WebAPI.Tools.Cors.Configuration;
 	using Infrastructure.Configuration;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.DependencyInjection;
@@ -54,7 +54,7 @@ namespace EventService.Presentation.WebAPI
 		{
 			if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") is "Development")
 			{
-				//MigrateDatabase(app);
+				MigrateDatabase(app);
 			}
 
 			app.UseExceptionMiddleware();
