@@ -11,6 +11,7 @@ namespace EventService.Infrastructure.EntityConfiguration
 {
 	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
+	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
 	using System;
 
@@ -35,20 +36,6 @@ namespace EventService.Infrastructure.EntityConfiguration
 		/// <param name="builder">The builder.</param>
 		protected override void ConfigureEntity(EntityTypeBuilder<Event> builder)
 		{
-			builder.Property(t => t.TenantId)
-				.IsRequired();
-
-			builder.Property(t => t.Name)
-				.HasMaxLength(20);
-
-			builder.Property(t => t.Description)
-				.HasMaxLength(300);
-
-			builder.Property(t => t.MusicType)
-				.HasConversion(x =>
-					x.ToString(), v =>
-						(MusicType)Enum.Parse(typeof(MusicType), v));
-
 			builder.OwnsOne(t => t.EventDate, a =>
 			{
 				a.Property(t => t.StartDate)
@@ -57,7 +44,24 @@ namespace EventService.Infrastructure.EntityConfiguration
 				.IsRequired();
 			});
 
+			builder.HasMany(f => f.Artists)
+				.WithOne().OnDelete(DeleteBehavior.Cascade);
+
+			builder.Property(t => t.MusicType)
+				.HasConversion(x =>
+					x.ToString(), v =>
+						(MusicType)Enum.Parse(typeof(MusicType), v));
+
+			builder.Property(t => t.Description)
+				.HasMaxLength(300);
+
 			builder.HasOne(t => t.Location);
+
+			builder.Property(t => t.TenantId)
+				.IsRequired();
+
+			builder.Property(t => t.Name)
+				.HasMaxLength(20);
 		}
 	}
 }
