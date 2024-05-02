@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventService.Infrastructure.Migrations
 {
     [DbContext(typeof(EventServiceDBContext))]
-    [Migration("20240315180755_InitialSetup")]
+    [Migration("20240502174525_InitialSetup")]
     partial class InitialSetup
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace EventService.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
+                .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -31,19 +31,13 @@ namespace EventService.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Artist")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                    b.Property<string>("Artists")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
 
@@ -54,8 +48,16 @@ namespace EventService.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("MusicType")
-                        .HasColumnType("int");
+                    b.Property<string>("MusicType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid>("UUId")
                         .HasColumnType("char(36)");
@@ -79,13 +81,11 @@ namespace EventService.Infrastructure.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double");
 
-                    b.Property<string>("Longitude")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double");
 
                     b.Property<DateTime>("ModificationDate")
                         .IsConcurrencyToken()
@@ -108,6 +108,27 @@ namespace EventService.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("LocationId");
 
+                    b.OwnsOne("EventService.Domain.AggregateModels.EventDate", "EventDate", b1 =>
+                        {
+                            b1.Property<long>("EventId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<DateTime>("EndDate")
+                                .HasColumnType("datetime(6)");
+
+                            b1.Property<DateTime>("StartDate")
+                                .HasColumnType("datetime(6)");
+
+                            b1.HasKey("EventId");
+
+                            b1.ToTable("Event");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EventId");
+                        });
+
+                    b.Navigation("EventDate");
+
                     b.Navigation("Location");
                 });
 
@@ -119,16 +140,16 @@ namespace EventService.Infrastructure.Migrations
                                 .HasColumnType("bigint");
 
                             b1.Property<string>("PostalCode")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasMaxLength(20)
+                                .HasColumnType("varchar(20)");
 
                             b1.Property<string>("State")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasMaxLength(30)
+                                .HasColumnType("varchar(30)");
 
                             b1.Property<string>("Street")
-                                .IsRequired()
-                                .HasColumnType("longtext");
+                                .HasMaxLength(50)
+                                .HasColumnType("varchar(50)");
 
                             b1.HasKey("LocationId");
 

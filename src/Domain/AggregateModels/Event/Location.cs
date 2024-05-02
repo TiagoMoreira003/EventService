@@ -32,6 +32,18 @@ namespace EventService.Domain.AggregateModels.Event
 		}
 
 		/// <summary>
+		/// Initializes a new instance of the <see cref="Location"/> class.
+		/// </summary>
+		/// <param name="latitude">The latitude.</param>
+		/// <param name="longitude">The longitude.</param>
+		internal Location(double latitude, double longitude)
+			: this()
+		{
+			this.Latitude = latitude;
+			this.Longitude = longitude;
+		}
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="Location" /> class.
 		/// </summary>
 		protected Location()
@@ -62,6 +74,15 @@ namespace EventService.Domain.AggregateModels.Event
 		/// The longitude.
 		/// </value>
 		public double Longitude { get; private set; }
+
+		/// <summary>
+		/// Adds the address.
+		/// </summary>
+		/// <param name="address">The address.</param>
+		public void AddAddress(Address address)
+		{
+			this.Address = address;
+		}
 
 		/// <summary>
 		/// Gets the atomic values.

@@ -11,6 +11,10 @@ namespace EventService.Infrastructure.Repository
 {
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Domain.AggregateModels.Event.Repository;
+	using EventService.Domain.AggregateModels.Event.Repository.Models;
+	using Microsoft.EntityFrameworkCore;
+	using System.Threading;
+	using System.Threading.Tasks;
 
 	/// <summary>
 	/// <see cref="EventRepository"/>
@@ -26,6 +30,17 @@ namespace EventService.Infrastructure.Repository
 		public EventRepository(EventServiceDBContext context)
 			: base(context)
 		{
+		}
+
+		public async Task<Event> GetByIdentifiersAsync(GetByIdentifiersModel model, CancellationToken cancellationToken)
+		{
+			return await this.Entities.SingleOrDefaultAsync(x =>
+			x.TenantId == model.TenantId &&
+			x.Location.Latitude == model.GeoCoordinates.Latitude &&
+			x.Location.Longitude == model.GeoCoordinates.Longitude &&
+			x.EventDate.StartDate == model.EventDate.StartDate &&
+			x.EventDate.EndDate == model.EventDate.EndDate
+			, cancellationToken);
 		}
 	}
 }

@@ -9,8 +9,11 @@
 
 namespace EventService.Infrastructure.EntityConfiguration
 {
+	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
+	using System;
+	using System.Linq;
 
 	/// <summary>
 	///   <see cref="EventEntityTypeConfiguration" />
@@ -33,15 +36,35 @@ namespace EventService.Infrastructure.EntityConfiguration
 		/// <param name="builder">The builder.</param>
 		protected override void ConfigureEntity(EntityTypeBuilder<Event> builder)
 		{
-			builder.HasMany(f => f.Artists);
-			builder.Property(t => t.Date)
+			builder.OwnsOne(t => t.EventDate, a =>
+			{
+				a.Property(t => t.StartDate)
 				.IsRequired();
+				a.Property(t => t.EndDate)
+				.IsRequired();
+			});
+
 			builder.Property(t => t.MusicType)
-				.IsRequired();
+				.HasConversion(x =>
+					x.ToString(), v =>
+						(MusicType)Enum.Parse(typeof(MusicType), v));
+
 			builder.Property(t => t.Description)
-				.HasMaxLength(300)
-				.IsRequired();
+				.HasMaxLength(300);
+
 			builder.HasOne(t => t.Location);
+
+			builder.Property(t => t.TenantId)
+				.IsRequired();
+
+			builder.Property(t => t.Name)
+				.HasMaxLength(20);
+
+			builder.Property(t => t.Artists)
+				.HasConversion(
+					v => string.Join(',', v),
+					v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
+					);
 		}
 	}
 }

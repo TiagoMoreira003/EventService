@@ -28,17 +28,35 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Event" /> class.
 		/// </summary>
-		/// <param name="date">The date.</param>
+		/// <param name="eventDate">The date.</param>
 		/// <param name="musicType">Type of the music.</param>
 		/// <param name="location">The location.</param>
 		/// <param name="description">The description.</param>
-		internal Event(Date date, MusicType musicType, Location location, string description)
+		/// <param name="tenantId">The tenant identifier.</param>
+		/// <param name="name">The name.</param>
+		internal Event(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name)
 			: this()
 		{
-			this.Date = date;
+			this.EventDate = eventDate;
 			this.MusicType = musicType;
 			this.Location = location;
 			this.Description = description;
+			this.TenantId = tenantId;
+			this.Name = name;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Event"/> class.
+		/// </summary>
+		/// <param name="eventDate">The event date.</param>
+		/// <param name="location">The location.</param>
+		/// <param name="tenantId">The tenant identifier.</param>
+		internal Event(EventDate eventDate, Location location, Guid tenantId)
+			: this()
+		{
+			this.EventDate = eventDate;
+			this.Location = location;
+			this.TenantId = tenantId;
 		}
 
 		/// <summary>
@@ -59,20 +77,20 @@ namespace EventService.Domain.AggregateModels.Event
 		public virtual IReadOnlyCollection<string> Artists => this.artists;
 
 		/// <summary>
-		/// Gets the date time.
-		/// </summary>
-		/// <value>
-		/// The date time.
-		/// </value>
-		public Date Date { get; private set; }
-
-		/// <summary>
 		/// Gets the description.
 		/// </summary>
 		/// <value>
 		/// The description.
 		/// </value>
 		public string Description { get; private set; }
+
+		/// <summary>
+		/// Gets the date time.
+		/// </summary>
+		/// <value>
+		/// The date time.
+		/// </value>
+		public EventDate EventDate { get; private set; }
 
 		/// <summary>
 		/// Gets the location.
@@ -89,6 +107,22 @@ namespace EventService.Domain.AggregateModels.Event
 		/// The type of the music.
 		/// </value>
 		public MusicType MusicType { get; private set; }
+
+		/// <summary>
+		/// Gets the name.
+		/// </summary>
+		/// <value>
+		/// The name.
+		/// </value>
+		public string Name { get; private set; }
+
+		/// <summary>
+		/// Gets the tenant identifier.
+		/// </summary>
+		/// <value>
+		/// The tenant identifier.
+		/// </value>
+		public Guid TenantId { get; private set; }
 
 		/// <summary>
 		/// Adds the artists.
@@ -110,6 +144,20 @@ namespace EventService.Domain.AggregateModels.Event
 			}
 
 			this.artists.Add(artist);
+		}
+
+		/// <summary>
+		/// Adds the details.
+		/// </summary>
+		/// <param name="musicType">Type of the music.</param>
+		/// <param name="description">The description.</param>
+		/// <param name="name">The name.</param>
+		public void AddDetails(MusicType musicType, string description, string name, Address address)
+		{
+			this.MusicType = musicType;
+			this.Description = description;
+			this.Name = name;
+			this.Location.AddAddress(address);
 		}
 
 		/// <summary>

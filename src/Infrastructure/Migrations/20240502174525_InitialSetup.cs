@@ -21,16 +21,14 @@ namespace EventService.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Address_PostalCode = table.Column<string>(type: "longtext", nullable: true)
+                    Address_PostalCode = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Address_State = table.Column<string>(type: "longtext", nullable: true)
+                    Address_State = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Address_Street = table.Column<string>(type: "longtext", nullable: true)
+                    Address_Street = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Latitude = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Longitude = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Latitude = table.Column<double>(type: "double", nullable: false),
+                    Longitude = table.Column<double>(type: "double", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ModificationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UUId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
@@ -47,13 +45,18 @@ namespace EventService.Infrastructure.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Artist = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    Artists = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Description = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
+                    Description = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    EventDate_EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    EventDate_StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     LocationId = table.Column<long>(type: "bigint", nullable: true),
-                    MusicType = table.Column<int>(type: "int", nullable: false),
+                    MusicType = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TenantId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     CreationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ModificationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UUId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")

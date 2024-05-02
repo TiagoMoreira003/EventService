@@ -10,6 +10,7 @@
 namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 {
 	using EventService.Domain.AggregateModels.Event;
+	using System;
 	using System.Collections.Generic;
 
 	/// <summary>
@@ -34,11 +35,22 @@ namespace EventService.Domain.AggregateModels.Event.Builder.EventBuilder
 		/// <summary>
 		/// Creates new event.
 		/// </summary>
-		/// <param name="date">The date.</param>
-		/// <param name="musictype">The musicType.</param>
+		/// <param name="eventDate">The date.</param>
+		/// <param name="musicType">The musicType.</param>
 		/// <param name="location">The location.</param>
 		/// <param name="description">The description.</param>
+		/// <param name="tenantId">The tenant identifier.</param>
+		/// <param name="name">The name.</param>
 		/// <returns></returns>
-		IEventBuilder NewEvent(Date date, MusicType musictype, Location location, string description);
+		IEventBuilder NewEvent(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name);
+
+		/// <summary>
+		/// Creates new eventidentifier.
+		/// </summary>
+		/// <param name="eventDate">The event date.</param>
+		/// <param name="location">The location.</param>
+		/// <param name="tenantId">The tenant identifier.</param>
+		/// <returns></returns>
+		IEventBuilder NewEventIdentifier(EventDate eventDate, Location location, Guid tenantId);
 	}
 }
