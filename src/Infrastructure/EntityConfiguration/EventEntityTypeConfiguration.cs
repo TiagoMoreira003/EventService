@@ -11,9 +11,9 @@ namespace EventService.Infrastructure.EntityConfiguration
 {
 	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
-	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Builders;
 	using System;
+	using System.Linq;
 
 	/// <summary>
 	///   <see cref="EventEntityTypeConfiguration" />
@@ -44,9 +44,6 @@ namespace EventService.Infrastructure.EntityConfiguration
 				.IsRequired();
 			});
 
-			builder.HasMany(f => f.Artists)
-				.WithOne().OnDelete(DeleteBehavior.Cascade);
-
 			builder.Property(t => t.MusicType)
 				.HasConversion(x =>
 					x.ToString(), v =>
@@ -62,6 +59,12 @@ namespace EventService.Infrastructure.EntityConfiguration
 
 			builder.Property(t => t.Name)
 				.HasMaxLength(20);
+
+			builder.Property(t => t.Artists)
+				.HasConversion(
+					v => string.Join(',', v),
+					v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
+					);
 		}
 	}
 }

@@ -46,7 +46,18 @@ namespace EventService.Presentation.WebAPI.Controllers
 			this.mediator = mediator;
 		}
 
+		/// <summary>
+		/// Adds the details event asynchronous.
+		/// </summary>
+		/// <param name="eventId">The event identifier.</param>
+		/// <param name="addDetailsEventDto">The add details event dto.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		///
 		[HttpPut("{eventId}")]
+		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
 		public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
 		{
 			Event EventDetails = await this.mediator.Send(new AddDetailsEventCommand

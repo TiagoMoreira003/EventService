@@ -98,7 +98,7 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <value>
 		/// The location.
 		/// </value>
-		public Location Location { get; private set; }
+		public virtual Location Location { get; private set; }
 
 		/// <summary>
 		/// Gets the type of the music.
