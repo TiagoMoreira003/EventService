@@ -1,25 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddDetailsEventCommandHandler.cs" company="KROWN">
+// <copyright file="UpdateEventCommandHandler.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// AddDetailsEventCommandHandler
+// UpdateEventCommandHandler
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
+namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 {
-	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Domain.AggregateModels.Event.Repository;
+	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.Exceptions;
 	using MediatR;
 
 	/// <summary>
-	/// <see cref="AddDetailsEventCommandHandler"/>
+	/// <see cref="UpdateEventCommandHandler"/>
 	/// </summary>
-	/// <seealso cref="IRequestHandler{AddDetailsEventCommand,Event}" />
-	public class AddDetailsEventCommandHandler : IRequestHandler<AddDetailsEventCommand, Event>
+	/// <seealso cref="IRequestHandler{CreateEventCommand,Event}" />
+	public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand, Event>
 	{
 		/// <summary>
 		/// The event repository
@@ -27,11 +27,10 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 		private readonly IEventRepository eventRepository;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="AddDetailsEventCommandHandler"/> class.
+		/// Initializes a new instance of the <see cref="UpdateEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
-		/// <param name="locationRepository">The location repository.</param>
-		public AddDetailsEventCommandHandler(IEventRepository eventRepository)
+		public UpdateEventCommandHandler(IEventRepository eventRepository)
 		{
 			this.eventRepository = eventRepository;
 		}
@@ -44,28 +43,33 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 		/// <returns>
 		/// Response from the request
 		/// </returns>
-		public async Task<Event> Handle(AddDetailsEventCommand request, CancellationToken cancellationToken)
+		/// <exception cref="DuplicatedException">The event with that owner, location and date is duplicated</exception>
+		public async Task<Event> Handle(UpdateEventCommand request, CancellationToken cancellationToken)
 		{
 			Event existingEvent = await this.eventRepository.GetAsync(request.EventId, cancellationToken);
 
 			if (existingEvent is null)
 			{
-				throw new NotFoundException($"The event with {request.EventId} does not exist");
+				throw new NotFoundException($"The event with id {request.EventId} doesn't exist!");
 			}
 
-			existingEvent.AddDetails(
-				request.MusicType,
-				request.Description,
-				request.Name,
-				new Address(
-					request.Location.Address.Street,
-					request.Location.Address.State,
-					request.Location.Address.PostalCode));
-
-			foreach (string artist in request.Artists)
+			existingEvent.Update(new AllPropertiesModel
 			{
-				existingEvent.AddArtist(artist);
-			}
+				Name = request.Name,
+				Description = request.Description,
+				EventDate = new EventDateModel
+				{
+					StartDate = request.EventDate.StartDate,
+					EndDate = request.EventDate.EndDate
+				},
+				Location = new LocationModel
+				{
+					Latitude = request.Location.Latitude,
+					Longitude = request.Location.Longitude
+				},
+				MusicType = request.MusicType,
+				Artists = request.Artists
+			});
 
 			await this.eventRepository.Update(existingEvent, cancellationToken);
 

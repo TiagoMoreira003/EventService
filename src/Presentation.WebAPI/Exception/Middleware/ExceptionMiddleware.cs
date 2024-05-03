@@ -9,12 +9,10 @@
 
 namespace EventService.Presentation.WebAPI.Exceptions.Middleware
 {
-	using System.Net;
 	using EventService.Domain.Exceptions;
 	using EventService.Presentation.WebAPI.Utils;
 	using Newtonsoft.Json;
-	using EventService.Domain.Exceptions;
-	using EventService.Presentation.WebAPI.Utils;
+	using System.Net;
 
 	/// <summary>
 	/// <see cref="ExceptionMiddleware"/>
