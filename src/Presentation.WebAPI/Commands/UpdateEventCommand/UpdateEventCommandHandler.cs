@@ -18,7 +18,7 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 	/// <summary>
 	/// <see cref="UpdateEventCommandHandler"/>
 	/// </summary>
-	/// <seealso cref="IRequestHandler{CreateEventCommand,Event}" />
+	/// <seealso cref="IRequestHandler{UpdateEventCommand,Event}" />
 	public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand, Event>
 	{
 		/// <summary>

@@ -20,7 +20,7 @@ namespace EventService.Domain.AggregateModels.Event.Repository.Models
 		/// <value>
 		/// The postal code.
 		/// </value>
-		public string PostalCode { get; set; }
+		public string PostalCode { get; init; }
 
 		/// <summary>
 		/// Gets or sets the state.
@@ -28,7 +28,7 @@ namespace EventService.Domain.AggregateModels.Event.Repository.Models
 		/// <value>
 		/// The state.
 		/// </value>
-		public string State { get; set; }
+		public string State { get; init; }
 
 		/// <summary>
 		/// Gets or sets the street.
@@ -36,6 +36,6 @@ namespace EventService.Domain.AggregateModels.Event.Repository.Models
 		/// <value>
 		/// The street.
 		/// </value>
-		public string Street { get; set; }
+		public string Street { get; init; }
 	}
 }

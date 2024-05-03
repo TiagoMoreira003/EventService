@@ -45,10 +45,10 @@ namespace EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto
 		public EventDateDto EventDate { get; init; }
 
 		/// <summary>
-		/// Gets the UUID.
+		/// Gets the event identifier.
 		/// </summary>
 		/// <value>
-		/// The UUID.
+		/// The event identifier.
 		/// </value>
 		public Guid EventId { get; init; }
 

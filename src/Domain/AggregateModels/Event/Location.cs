@@ -96,7 +96,7 @@ namespace EventService.Domain.AggregateModels.Event
 		{
 			this.Longitude = longitude;
 			this.Latitude = latitude;
-			Address.Update(street, state, postalCode);
+			this.Address.Update(street, state, postalCode);
 		}
 
 		/// <summary>

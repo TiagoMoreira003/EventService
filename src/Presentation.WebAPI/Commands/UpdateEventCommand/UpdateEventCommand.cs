@@ -44,13 +44,14 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		/// </value>
 		public EventDateDto EventDate { get; init; }
 
-		public Guid EventId { get; init; }
-
 		/// <summary>
-		/// Gets the artists.
+		/// Gets the event identifier.
 		/// </summary>
 		/// <value>
-		/// The artists.
+		/// The event identifier.
+		/// </value>
+		public Guid EventId { get; init; }
+
 		/// </value>
 		/// <summary>
 		/// Gets the location.
@@ -75,12 +76,5 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		/// The name.
 		/// </value>
 		public string Name { get; init; }
-
-		/// <summary>
-		/// Gets the UUID.
-		/// </summary>
-		/// <value>
-		/// The UUID.
-		/// </value>
 	}
 }
