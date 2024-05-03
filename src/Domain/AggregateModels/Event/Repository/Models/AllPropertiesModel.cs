@@ -7,15 +7,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace EventService.Domain.AggregateModels.Event.Repository.Models
 {
+	using System.Collections.Generic;
+
 	/// <summary>
 	///   <see cref="AllPropertiesModel" />
 	/// </summary>
 	public class AllPropertiesModel
 	{
+		/// <summary>
+		/// Gets the artists.
+		/// </summary>
+		/// <value>
+		/// The artists.
+		/// </value>
 		public List<string> Artists { get; init; }
 
 		/// <summary>
