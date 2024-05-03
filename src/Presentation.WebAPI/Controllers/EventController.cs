@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="EventController.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
@@ -13,7 +13,6 @@ namespace EventService.Presentation.WebAPI.Controllers
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
-	using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
 	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
 	using EventService.Presentation.WebAPI.Dto.Output;
@@ -110,6 +109,22 @@ namespace EventService.Presentation.WebAPI.Controllers
 
 			return this.Ok(this.mapper.Map<EventDto>(newevent));
 		}
+
+		[HttpDelete("{EventId}")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+		public async Task<IActionResult> DeleteEventAsync([FromRoute] GetByEventIdDto filters, CancellationToken cancellationToken)
+		{
+			await this.mediator.Publish(new DeleteEventCommand
+			{
+				EventId = filters.EventId,
+			}, cancellationToken);
+
+			return this.Ok();
+		}
+
+
 
 		/// <summary>
 		/// Updates the event asynchronous.
