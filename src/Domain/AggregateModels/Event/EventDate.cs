@@ -46,17 +46,6 @@ namespace EventService.Domain.AggregateModels
 		public DateTime StartDate { get; private set; }
 
 		/// <summary>
-		/// Updates the date.
-		/// </summary>
-		/// <param name="startDate">The start date.</param>
-		/// <param name="endDate">The end date.</param>
-		public void UpdateDate(DateTime startDate, DateTime endDate)
-		{
-			this.StartDate = startDate;
-			this.EndDate = endDate;
-		}
-
-		/// <summary>
 		/// Gets the atomic values.
 		/// </summary>
 		/// <returns></returns>

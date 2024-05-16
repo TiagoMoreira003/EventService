@@ -36,14 +36,6 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 			this.eventRepository = eventRepository;
 		}
 
-		/// <summary>
-		/// Handles a request
-		/// </summary>
-		/// <param name="request">The request</param>
-		/// <param name="cancellationToken">Cancellation token</param>
-		/// <returns>
-		/// Response from the request
-		/// </returns>
 		public async Task<Event> Handle(AddDetailsEventCommand request, CancellationToken cancellationToken)
 		{
 			Event existingEvent = await this.eventRepository.GetAsync(request.EventId, cancellationToken);

@@ -32,12 +32,6 @@ namespace EventService.Infrastructure.Repository
 		{
 		}
 
-		/// <summary>
-		/// Gets the by identifiers asynchronous.
-		/// </summary>
-		/// <param name="model">The model.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
 		public async Task<Event> GetByIdentifiersAsync(GetByIdentifiersModel model, CancellationToken cancellationToken)
 		{
 			return await this.Entities.SingleOrDefaultAsync(x =>

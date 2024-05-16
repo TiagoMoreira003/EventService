@@ -24,8 +24,8 @@ namespace EventService.Infrastructure.Configuration
 		/// <param name="services">The services.</param>
 		public static void RegisterInfrastructureServices(this IServiceCollection services)
 		{
-			services.AddScoped<IEventRepository, EventRepository>();
 			services.AddScoped<ILocationRepository, LocationRepository>();
+			services.AddScoped<IEventRepository, EventRepository>();
 		}
 	}
 }

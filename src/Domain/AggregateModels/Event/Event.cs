@@ -8,7 +8,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels.Event
 {
-	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.Exceptions;
 	using EventService.Domain.SeedWork;
 	using System;
@@ -162,20 +161,6 @@ namespace EventService.Domain.AggregateModels.Event
 		}
 
 		/// <summary>
-		/// Updates the specified model.
-		/// </summary>
-		/// <param name="model">The model.</param>
-		public void Update(AllPropertiesModel model)
-		{
-			this.MusicType = model.MusicType;
-			this.Description = model.Description;
-			this.Name = model.Name;
-			this.EventDate.UpdateDate(model.EventDate.StartDate, model.EventDate.StartDate);
-			this.Location.Update(model.Location.Longitude, model.Location.Longitude,
-				model.Location.Address.Street, model.Location.Address.State, model.Location.Address.PostalCode);
-		}
-
-		/// <summary>
 		/// Gets the atomic values.
 		/// </summary>
 		/// <returns></returns>
@@ -189,6 +174,7 @@ namespace EventService.Domain.AggregateModels.Event
 		/// </summary>
 		/// <param name="artist">The artist.</param>
 		/// <returns></returns>
+
 		private bool ArtistExists(string artist)
 		{
 			return this.artists.Exists(x => x == artist);
