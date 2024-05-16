@@ -85,6 +85,21 @@ namespace EventService.Domain.AggregateModels.Event
 		}
 
 		/// <summary>
+		/// Updates the specified longitude.
+		/// </summary>
+		/// <param name="longitude">The longitude.</param>
+		/// <param name="latitude">The latitude.</param>
+		/// <param name="street">The street.</param>
+		/// <param name="state">The state.</param>
+		/// <param name="postalCode">The postal code.</param>
+		public void Update(double longitude, double latitude, string street, string state, string postalCode)
+		{
+			this.Longitude = longitude;
+			this.Latitude = latitude;
+			this.Address.Update(street, state, postalCode);
+		}
+
+		/// <summary>
 		/// Gets the atomic values.
 		/// </summary>
 		/// <returns></returns>
