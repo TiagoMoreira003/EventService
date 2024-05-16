@@ -13,6 +13,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
+	using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
 	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
 	using EventService.Presentation.WebAPI.Dto.Output;
