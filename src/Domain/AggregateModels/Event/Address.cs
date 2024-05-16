@@ -55,6 +55,19 @@ namespace EventService.Domain.AggregateModels
 		public string Street { get; private set; }
 
 		/// <summary>
+		/// Updates the specified street.
+		/// </summary>
+		/// <param name="street">The street.</param>
+		/// <param name="state">The state.</param>
+		/// <param name="postalCode">The postal code.</param>
+		public void Update(string street, string state, string postalCode)
+		{
+			this.Street = street;
+			this.State = state;
+			this.PostalCode = postalCode;
+		}
+
+		/// <summary>
 		/// Gets the atomic values.
 		/// </summary>
 		/// <returns></returns>

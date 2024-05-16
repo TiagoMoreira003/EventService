@@ -9,14 +9,14 @@
 
 namespace EventService.Presentation.WebAPI
 {
-	using Domain.Configuration;
+	using EventService.Domain.Configuration;
 	using EventService.Infrastructure;
+	using EventService.Infrastructure.Configuration;
 	using EventService.Presentation.WebAPI.Configuration;
 	using EventService.Presentation.WebAPI.Exceptions.Middleware;
 	using EventService.Presentation.WebAPI.Tools.Cors.Configuration;
 	using EventService.Presentation.WebAPI.Validation;
 	using FluentValidation.AspNetCore;
-	using Infrastructure.Configuration;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.OpenApi.Models;
@@ -63,7 +63,7 @@ namespace EventService.Presentation.WebAPI
 
 			app.UseSwaggerUI(options =>
 			{
-				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Event Service API V1");
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Event Collector API V1");
 			});
 
 			app.UseRouting();
@@ -80,7 +80,15 @@ namespace EventService.Presentation.WebAPI
 		/// <param name="services">The services.</param>
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<EventServiceDBContext>(options => options.UseLazyLoadingProxies(), ServiceLifetime.Scoped);
+			var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
+
+			var connectionString = "server=localhost;port=3306;user=root;password=root;database=eventservice";
+
+			services.AddDbContext<EventServiceDBContext>(
+						dbContextOptions => dbContextOptions
+							.UseMySql(connectionString, serverVersion));
+
+			//services.AddDbContext<EventServiceDBContext>(options => options.UseLazyLoadingProxies(), ServiceLifetime.Scoped);
 
 			services.RegisterDomainServices();
 			services.RegisterInfrastructureServices();
