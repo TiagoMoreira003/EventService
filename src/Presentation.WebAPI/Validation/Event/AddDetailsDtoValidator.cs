@@ -33,7 +33,8 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 
 			RuleFor(x => x.Description)
 				.NotEmpty()
-					.WithMessage("Description is required");
+					.WithMessage("Description is required")
+						.MaximumLength(300);
 
 			RuleFor(x => x.EventId)
 				.NotEmpty()
@@ -45,7 +46,8 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 
 			RuleFor(x => x.Name)
 				.NotEmpty()
-					.WithMessage("Name is required");
+					.WithMessage("Name is required")
+						.MaximumLength(20);
 
 			RuleFor(x => x.MusicType)
 				.NotEmpty()

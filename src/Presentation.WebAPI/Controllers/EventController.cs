@@ -117,7 +117,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="updateEventDto">The update event dto.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-		[HttpPut("{eventId}")]
+		[HttpPut("u{eventId}")]
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
