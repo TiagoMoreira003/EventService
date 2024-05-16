@@ -12,7 +12,7 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 	using MediatR;
 
 	/// <summary>
-	/// <see cref="DeleteEventCommand" />
+	///   <see cref="DeleteEventCommand" />
 	/// </summary>
 	/// <seealso cref="IRequest{Event}" />
 	public class DeleteEventCommand : IRequest
@@ -24,6 +24,5 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 		/// The event identifier.
 		/// </value>
 		public Guid EventId { get; init; }
-
 	}
 }

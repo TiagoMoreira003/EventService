@@ -112,7 +112,13 @@ namespace EventService.Presentation.WebAPI.Controllers
 			return this.Ok(this.mapper.Map<EventDto>(newevent));
 		}
 
-		[HttpDelete("{EventId}")]
+		/// <summary>
+		/// Deletes the event asynchronous.
+		/// </summary>
+		/// <param name="filters">The filters.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpDelete("{eventId}")]
 		[ProducesResponseType((int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
@@ -132,7 +138,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="updateEventDto">The update event dto.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-		[HttpPut("u{eventId}")]
+		[HttpPut("{eventId}/update")]
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]

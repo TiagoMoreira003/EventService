@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GetByTeamIdDto.cs" company="HumbleBets">
-//     Copyright (c) HumbleBets. All rights reserved.
+// <copyright file="GetByEventIdDto.cs" company="KROWN">
+//     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // GetByEventIdDto
