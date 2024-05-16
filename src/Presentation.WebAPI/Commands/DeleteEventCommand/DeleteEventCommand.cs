@@ -14,8 +14,8 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 	/// <summary>
 	///   <see cref="DeleteEventCommand" />
 	/// </summary>
-	/// <seealso cref="IRequest{Event}" />
-	public class DeleteEventCommand : IRequest
+	/// <seealso cref="INotification" />
+	public class DeleteEventCommand : INotification
 	{
 		/// <summary>
 		/// Gets the event identifier.

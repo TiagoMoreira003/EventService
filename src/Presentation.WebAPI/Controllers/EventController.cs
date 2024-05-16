@@ -122,6 +122,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		[ProducesResponseType((int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
 		public async Task<IActionResult> DeleteEventAsync([FromRoute] GetByEventIdDto filters, CancellationToken cancellationToken)
 		{
 			await this.mediator.Publish(new DeleteEventCommand
@@ -139,6 +140,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
 		[HttpPut("{eventId}/update")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]

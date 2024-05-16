@@ -16,7 +16,7 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 	/// <see cref="DeleteEventCommandHandler"/>
 	/// </summary>
 	/// <seealso cref="IRequestHandler{DeleteEventCommand}" />
-	public class DeleteEventCommandHandler : IRequestHandler<DeleteEventCommand> 
+	public class DeleteEventCommandHandler : INotificationHandler<DeleteEventCommand>
 	{
 		/// <summary>
 		/// The event repository
@@ -27,7 +27,7 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 		/// Initializes a new instance of the <see cref="DeleteEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
-		public DeleteEventCommandHandler(IEventRepository eventRepository) 
+		public DeleteEventCommandHandler(IEventRepository eventRepository)
 		{
 			this._eventRepository = eventRepository;
 		}
@@ -38,7 +38,7 @@ namespace EventService.Presentation.WebAPI.Commands.DeleteEventCommand
 		/// <param name="command">The command.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <exception cref="EventService.Domain.Exceptions.NotFoundException">The team with id {command.EventId} wasn't found.</exception>
-		public async Task Handle (DeleteEventCommand command, CancellationToken cancellationToken) 
+		public async Task Handle(DeleteEventCommand command, CancellationToken cancellationToken)
 		{
 			var existingEvent = await this._eventRepository.GetAsync(command.EventId, cancellationToken);
 
