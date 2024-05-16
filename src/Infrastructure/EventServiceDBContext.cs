@@ -9,7 +9,7 @@
 
 namespace EventService.Infrastructure
 {
-	using EventService.Domain.SeedWork;
+	using Domain.SeedWork;
 	using EventService.Infrastructure.EntityConfiguration;
 	using MediatR;
 	using Microsoft.EntityFrameworkCore;
@@ -105,7 +105,7 @@ namespace EventService.Infrastructure
 				.UseLazyLoadingProxies()
 				.UseMySql(
 					this.configuration.GetSection(EventServiceDBContext.DatabaseConnectionSection).Value,
-					new MySqlServerVersion(new Version(8, 0, 36)));
+					new MySqlServerVersion(new Version(8, 0, 28)));
 
 			base.OnConfiguring(optionsBuilder);
 		}

@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="EventController.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
@@ -13,10 +13,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
-	using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
-	using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
-	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
 	using EventService.Presentation.WebAPI.Dto.Output;
 	using EventService.Presentation.WebAPI.Utils;
 	using MediatR;
@@ -56,14 +53,14 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="addDetailsEventDto">The add details event dto.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-
+		///
 		[HttpPut("{eventId}")]
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
 		public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
 		{
-			Event eventDetails = await this.mediator.Send(new AddDetailsEventCommand
+			Event EventDetails = await this.mediator.Send(new AddDetailsEventCommand
 			{
 				MusicType = addDetailsEventDto.MusicType,
 				Description = addDetailsEventDto.Description,
@@ -76,9 +73,9 @@ namespace EventService.Presentation.WebAPI.Controllers
 					PostalCode = addDetailsEventDto.Location.Address.PostalCode,
 				},
 				EventId = eventId,
-			}, cancellationToken);
+			});
 
-			return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
+			return this.Ok(this.mapper.Map<EventDetailsDto>(EventDetails));
 		}
 
 		/// <summary>
@@ -110,62 +107,6 @@ namespace EventService.Presentation.WebAPI.Controllers
 			cancellationToken);
 
 			return this.Ok(this.mapper.Map<EventDto>(newevent));
-		}
-
-		/// <summary>
-		/// Deletes the event asynchronous.
-		/// </summary>
-		/// <param name="filters">The filters.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
-		[HttpDelete("{eventId}")]
-		[ProducesResponseType((int)HttpStatusCode.OK)]
-		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-		public async Task<IActionResult> DeleteEventAsync([FromRoute] GetByEventIdDto filters, CancellationToken cancellationToken)
-		{
-			await this.mediator.Publish(new DeleteEventCommand
-			{
-				EventId = filters.EventId,
-			}, cancellationToken);
-
-			return this.Ok();
-		}
-
-		/// <summary>
-		/// Updates the event asynchronous.
-		/// </summary>
-		/// <param name="updateEventDto">The update event dto.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
-		[HttpPut("{eventId}/update")]
-		[ProducesResponseType((int)HttpStatusCode.OK)]
-		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
-		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid eventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
-		{
-			Event existingEvent = await this.mediator.Send(new UpdateEventCommand
-			{
-				EventId = eventId,
-				Name = updateEventDto.Name,
-				Description = updateEventDto.Description,
-				EventDate = new EventDateDto
-				{
-					StartDate = updateEventDto.EventDate.StartDate,
-					EndDate = updateEventDto.EventDate.EndDate
-				},
-				Location = new LocationDto
-				{
-					Latitude = updateEventDto.Location.Latitude,
-					Longitude = updateEventDto.Location.Longitude
-				},
-				MusicType = updateEventDto.MusicType,
-				Artists = updateEventDto.Artists,
-			}, cancellationToken);
-
-			return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
 		}
 	}
 }
