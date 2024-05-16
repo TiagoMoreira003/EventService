@@ -39,7 +39,7 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 
 			RuleFor(x => x.Artists)
 				.NotEmpty()
-					.WithMessage("The artirts shouldn't be null");
+					.WithMessage("The artists shouldn't be null");
 		}
 	}
 }

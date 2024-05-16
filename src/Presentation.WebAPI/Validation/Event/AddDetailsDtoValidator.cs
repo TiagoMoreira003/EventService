@@ -25,33 +25,35 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 		{
 			RuleFor(x => x.Address)
 				.NotNull()
-					.WithMessage("Address is required");
+					.WithMessage("Address shouldn't be null.");
 
 			RuleFor(x => x.Artists)
 				.NotEmpty()
-					.WithMessage("Artists is required");
+					.WithMessage("Artists shouldn't be null.");
 
 			RuleFor(x => x.Description)
+				.MaximumLength(300)
+				.WithMessage("Description should be less than 300 characters")
 				.NotEmpty()
-					.WithMessage("Description is required")
-						.MaximumLength(300);
+				.WithMessage("Description shouldn't be null.");
 
 			RuleFor(x => x.EventId)
 				.NotEmpty()
-					.WithMessage("EventId is required");
+					.WithMessage("EventId shouldn't be null.");
 
 			RuleFor(x => x.Location)
 				.NotNull()
-					.WithMessage("Location is required");
+					.WithMessage("Location shouldn't be null.");
 
 			RuleFor(x => x.Name)
+				.MaximumLength(20)
+				.WithMessage("Name should be less than 20 characters")
 				.NotEmpty()
-					.WithMessage("Name is required")
-						.MaximumLength(20);
+				.WithMessage("Name shouldn't be null.");
 
 			RuleFor(x => x.MusicType)
 				.NotEmpty()
-					.WithMessage("MusicType is required");
+					.WithMessage("MusicType shouldn't be null.");
 		}
 	}
 }
