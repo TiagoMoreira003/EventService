@@ -14,6 +14,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
 	using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
+	using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
 	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
 	using EventService.Presentation.WebAPI.Dto.Output;
@@ -124,8 +125,6 @@ namespace EventService.Presentation.WebAPI.Controllers
 
 			return this.Ok();
 		}
-
-
 
 		/// <summary>
 		/// Updates the event asynchronous.
