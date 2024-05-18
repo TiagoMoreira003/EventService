@@ -14,7 +14,8 @@ namespace EventService.Presentation.WebAPI.Controllers
 	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
 	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
 	using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
-	using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
+    using EventService.Presentation.WebAPI.Commands.ReadEventCommand;
+    using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
 	using EventService.Presentation.WebAPI.Dto.Input;
 	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
 	using EventService.Presentation.WebAPI.Dto.Output;
@@ -167,5 +168,20 @@ namespace EventService.Presentation.WebAPI.Controllers
 
 			return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
 		}
-	}
+
+        [HttpGet("{eventId}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ReadEventAsync([FromRoute] ReadEventInputDto filters, CancellationToken cancellationToken)
+        {
+            var eventDetails = await this.mediator.Send(new ReadEventCommand
+            {
+                EventId = filters.EventId,
+            }, cancellationToken);
+
+            return this.Ok(eventDetails);
+        }
+    }
 }
