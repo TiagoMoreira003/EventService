@@ -7,15 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace EventService.Presentation.WebAPI.Commands.ReadEventCommand
+namespace EventService.Presentation.WebAPI.Query.ReadEventCommand
 {
+    using EventService.Domain.AggregateModels.Event;
     using MediatR;
 
     /// <summary>
-    ///   <see cref="ReadEventCommand" />
+    ///   <see cref="ReadEventQuery" />
     /// </summary>
-    /// <seealso cref="INotification" />
-    public class ReadEventCommand : INotification
+    /// <seealso cref="IRequest" />
+    public class ReadEventQuery : IRequest<Event>
     {
         /// <summary>
         /// Gets the event identifier.

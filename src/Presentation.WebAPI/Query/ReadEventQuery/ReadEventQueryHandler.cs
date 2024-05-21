@@ -1,24 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ReadEventCommand.cs" company="KROWN">
+// <copyright file="ReadEventQueryHandler.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// ReadEventCommandHandler
+// ReadEventQueryHandler
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace EventService.Presentation.WebAPI.Commands.ReadEventCommand
+namespace EventService.Presentation.WebAPI.Query.ReadEventHandler
 {
     using EventService.Domain.AggregateModels.Event;
     using EventService.Domain.AggregateModels.Event.Repository;
     using EventService.Domain.Exceptions;
+    using EventService.Presentation.WebAPI.Query.ReadEventCommand;
     using MediatR;
-    using System.Diagnostics.Tracing;
 
     /// <summary>
-    /// <see cref="ReadEventCommandHandler"/>
+    /// <see cref="ReadEventQueryHandler"/>
     /// </summary>
-    /// <seealso cref="IRequestHandler{ReadEventCommand}" />
-    public class ReadEventCommandHandler : INotificationHandler<ReadEventCommand>
+    /// <seealso cref="IRequestHandler{ReadEventQuery}" />
+    public class ReadEventQueryHandler : IRequestHandler<ReadEventQuery, Event>
     {
         /// <summary>
         /// The event repository
@@ -26,21 +26,21 @@ namespace EventService.Presentation.WebAPI.Commands.ReadEventCommand
         private readonly IEventRepository _eventRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadEventCommandHandler"/> class.
+        /// Initializes a new instance of the <see cref="ReadEventQueryHandler"/> class.
         /// </summary>
         /// <param name="eventRepository">The event repository.</param>
-        public ReadEventCommandHandler(IEventRepository eventRepository)
+        public ReadEventQueryHandler(IEventRepository eventRepository)
         {
-            this._eventRepository = eventRepository;
+            _eventRepository = eventRepository;
         }
 
-        public async Task<Event> Handle(ReadEventCommand request, CancellationToken cancellationToken)
+        public async Task<Event> Handle(ReadEventQuery request, CancellationToken cancellationToken)
         {
-            Event existingEvent = await this._eventRepository.GetByIdAsync(request.EventId, cancellationToken);
+            Event existingEvent = await _eventRepository.GetByIdAsync(request.EventId, cancellationToken);
 
             if (existingEvent is null)
             {
-                throw new EntityNotFoundException($"The entity with ID {request.EventId} does not exist.");
+                throw new NotFoundException($"The entity with ID {request.EventId} does not exist.");
             }
 
             return existingEvent;

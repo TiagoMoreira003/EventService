@@ -2,6 +2,6 @@
 {
     public class ReadEventInputDto
     {
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
     }
 }
