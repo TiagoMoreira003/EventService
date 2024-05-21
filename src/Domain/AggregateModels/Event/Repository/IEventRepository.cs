@@ -9,6 +9,7 @@
 
 using EventService.Domain.AggregateModels.Event.Repository.Models;
 using EventService.Domain.SeedWork;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,5 +22,8 @@ namespace EventService.Domain.AggregateModels.Event.Repository
 	public interface IEventRepository : IRepository<Event>
 	{
 		Task<Event> GetByIdentifiersAsync(GetByIdentifiersModel model, CancellationToken cancellationToken);
-	}
+
+		Task<List<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken);
+
+    }
 }
