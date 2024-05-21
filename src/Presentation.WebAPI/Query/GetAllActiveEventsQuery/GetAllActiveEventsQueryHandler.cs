@@ -36,8 +36,12 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
         /// <summary>
         /// Handles the specified command.
         /// </summary>
+        /// <param name="request">The request</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
+        /// <returns>
+        /// Response from the request
+        /// </returns>
+        /// <exception cref="EventService.Domain.Exceptions.NotFoundException">No exist no one event</exception>
         /// <exception cref="NotFoundException">The team with id {command.EventId} wasn't found.</exception>
         public async Task<List<Event>> Handle(GetAllActiveEventsQuery request, CancellationToken cancellationToken)
         {

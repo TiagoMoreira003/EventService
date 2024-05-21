@@ -13,17 +13,16 @@ namespace EventService.Presentation.WebAPI.Validation.Event
     using FluentValidation;
 
     /// <summary>
-    /// <see cref="GetAllEventsDtoValidator"/>
+    ///   <see cref="GetAllEventsDtoValidator" />
     /// </summary>
     /// <seealso cref="AbstractValidator{GetAllActiveEventsCommand}" />
     public class GetAllEventsDtoValidator : AbstractValidator<GetAllActiveEventsQuery>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllEventsDtoValidator"/> class.
+        /// Initializes a new instance of the <see cref="GetAllEventsDtoValidator" /> class.
         /// </summary>
         public GetAllEventsDtoValidator()
         {
-
         }
     }
 }

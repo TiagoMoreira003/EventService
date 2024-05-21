@@ -12,7 +12,7 @@ namespace EventService.Presentation.WebAPI.Dto.Output
     using EventService.Domain.AggregateModels;
 
     /// <summary>
-    /// <see cref="GetAllEventsOutputDto"/>
+    /// <see cref="GetAllEventsOutputDto" />
     /// </summary>
     public class GetAllEventsOutputDto
     {
