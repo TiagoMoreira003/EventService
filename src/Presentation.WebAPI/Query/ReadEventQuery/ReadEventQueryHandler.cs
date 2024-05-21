@@ -15,7 +15,7 @@ namespace EventService.Presentation.WebAPI.Query.ReadEventHandler
     using MediatR;
 
     /// <summary>
-    /// <see cref="ReadEventQueryHandler"/>
+    /// <see cref="ReadEventQueryHandler" />
     /// </summary>
     /// <seealso cref="IRequestHandler{ReadEventQuery}" />
     public class ReadEventQueryHandler : IRequestHandler<ReadEventQuery, Event>
@@ -26,7 +26,7 @@ namespace EventService.Presentation.WebAPI.Query.ReadEventHandler
         private readonly IEventRepository _eventRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadEventQueryHandler"/> class.
+        /// Initializes a new instance of the <see cref="ReadEventQueryHandler" /> class.
         /// </summary>
         /// <param name="eventRepository">The event repository.</param>
         public ReadEventQueryHandler(IEventRepository eventRepository)
@@ -34,6 +34,15 @@ namespace EventService.Presentation.WebAPI.Query.ReadEventHandler
             _eventRepository = eventRepository;
         }
 
+        /// <summary>
+        /// Handles a request
+        /// </summary>
+        /// <param name="request">The request</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>
+        /// Response from the request
+        /// </returns>
+        /// <exception cref="NotFoundException">The entity with ID {request.EventId} does not exist.</exception>
         public async Task<Event> Handle(ReadEventQuery request, CancellationToken cancellationToken)
         {
             Event existingEvent = await _eventRepository.GetByIdAsync(request.EventId, cancellationToken);

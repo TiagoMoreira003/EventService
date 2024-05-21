@@ -12,13 +12,13 @@ namespace EventService.Presentation.WebAPI.Validation.Event
     using FluentValidation;
 
     /// <summary>
-    /// <see cref="ReadEventDtoValidator"/>
+    ///   <see cref="ReadEventDtoValidator" />
     /// </summary>
     /// <seealso cref="AbstractValidator{CreateEventDto}" />
     public class ReadEventDtoValidator : AbstractValidator<ReadEventInputDto>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadEventDtoValidator"/> class.
+        /// Initializes a new instance of the <see cref="ReadEventDtoValidator" /> class.
         /// </summary>
         public ReadEventDtoValidator()
         {

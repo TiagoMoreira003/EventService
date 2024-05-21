@@ -18,14 +18,14 @@ namespace EventService.Infrastructure.Repository
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="EventRepository"/>
+    /// <see cref="EventRepository" />
     /// </summary>
     /// <seealso cref="IEventRepository" />
-    /// <seealso cref="GenericRepository{Event}"/>
+    /// <seealso cref="GenericRepository{Event}" />
     internal class EventRepository : GenericRepository<Event>, IEventRepository
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventRepository"/> class.
+        /// Initializes a new instance of the <see cref="EventRepository" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
         public EventRepository(EventServiceDBContext context)
@@ -50,6 +50,12 @@ namespace EventService.Infrastructure.Repository
             , cancellationToken);
         }
 
+        /// <summary>
+        /// Gets the by identifier asynchronous.
+        /// </summary>
+        /// <param name="eventid">The eventid.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
         public async Task<Event> GetByIdAsync(Guid eventid, CancellationToken cancellationToken)
         {
             return await this.Entities.SingleOrDefaultAsync(t => t.UUId == eventid, cancellationToken);

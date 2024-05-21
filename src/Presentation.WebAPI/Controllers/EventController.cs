@@ -25,9 +25,9 @@ namespace EventService.Presentation.WebAPI.Controllers
     using System.Net;
 
     /// <summary>
-    /// <see cref="EventController"/>
+    /// <see cref="EventController" />
     /// </summary>
-    /// <seealso cref="Controller"/>
+    /// <seealso cref="Controller" />
     [ApiController]
     [Route("api/v1/Event")]
     public class EventController : Controller
@@ -42,6 +42,11 @@ namespace EventService.Presentation.WebAPI.Controllers
         /// </summary>
         private readonly IMediator mediator;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventController"/> class.
+        /// </summary>
+        /// <param name="mapper">The mapper.</param>
+        /// <param name="mediator">The mediator.</param>
         public EventController(
             IMapper mapper,
             IMediator mediator)
@@ -137,6 +142,7 @@ namespace EventService.Presentation.WebAPI.Controllers
         /// <summary>
         /// Updates the event asynchronous.
         /// </summary>
+        /// <param name="eventId">The event identifier.</param>
         /// <param name="updateEventDto">The update event dto.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
@@ -169,6 +175,12 @@ namespace EventService.Presentation.WebAPI.Controllers
             return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
         }
 
+        /// <summary>
+        /// Reads the event asynchronous.
+        /// </summary>
+        /// <param name="filters">The filters.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
         [HttpGet("{eventId}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]

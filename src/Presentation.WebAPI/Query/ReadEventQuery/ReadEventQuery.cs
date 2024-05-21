@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ReadEventCommand.cs" company="KROWN">
+// <copyright file="ReadEventQuery.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// ReadEventCommand
+// ReadEventQuery
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ namespace EventService.Presentation.WebAPI.Query.ReadEventCommand
     using MediatR;
 
     /// <summary>
-    ///   <see cref="ReadEventQuery" />
+    /// <see cref="ReadEventQuery" />
     /// </summary>
     /// <seealso cref="IRequest" />
     public class ReadEventQuery : IRequest<Event>

@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DeleteEventDtoValidator.cs" company="KROWN">
+// <copyright file="ReadEventDtoValidator.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// DeleteEventDtoValidator
+// ReadEventDtoValidator
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Presentation.WebAPI.Validation.Event
@@ -12,13 +12,13 @@ namespace EventService.Presentation.WebAPI.Validation.Event
     using FluentValidation;
 
     /// <summary>
-    /// <see cref="CreateEventDtoValidator"/>
+    /// <see cref="CreateEventDtoValidator" />
     /// </summary>
     /// <seealso cref="AbstractValidator{CreateEventDto}" />
     public class GetByEventIdDtoValidator : AbstractValidator<GetByEventIdDto>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetByEventIdDtoValidator"/> class.
+        /// Initializes a new instance of the <see cref="GetByEventIdDtoValidator" /> class.
         /// </summary>
         public GetByEventIdDtoValidator()
         {
