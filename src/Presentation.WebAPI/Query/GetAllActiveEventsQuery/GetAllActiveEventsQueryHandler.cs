@@ -48,9 +48,9 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
             var events = await _eventRepository.GetAllActiveEventsAsync(cancellationToken);
 
 
-            if (events is null || !events.Any())
+            if (events == null || !events.Any())
             {
-                throw new NotFoundException($"No exist no one event");
+                throw new NotFoundException("No events found.");
             }
 
             return events;

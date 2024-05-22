@@ -14,7 +14,7 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
     /// <summary>
     /// <see cref="GetAllActiveEventsQuery" />
     /// </summary>
-    /// <seealso cref="MediatR.IRequest{List{Event}}" />
+    /// <seealso cref="IRequest{List{Event}}" />
     public class GetAllActiveEventsQuery : IRequest<List<Event>>
     {
     }
