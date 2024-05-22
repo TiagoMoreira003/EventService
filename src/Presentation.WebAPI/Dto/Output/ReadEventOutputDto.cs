@@ -46,7 +46,7 @@ namespace EventService.Presentation.WebAPI.Dto.Output
         /// <value>
         /// The tenant identifier.
         /// </value>
-        public Guid TenantId { get; init; } //nao sei se é preciso e se é preciso adicionar o EventId
+        public Guid TenantId { get; init; }
 
         /// <summary>
         /// Gets the uu identifier.
