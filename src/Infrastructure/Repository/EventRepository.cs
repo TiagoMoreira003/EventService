@@ -13,16 +13,17 @@ namespace EventService.Infrastructure.Repository
     using EventService.Domain.AggregateModels.Event.Repository;
     using EventService.Domain.AggregateModels.Event.Repository.Models;
     using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// <see cref="EventRepository" />
+    ///   <see cref="EventRepository" />
     /// </summary>
     /// <seealso cref="IEventRepository" />
     /// <seealso cref="GenericRepository{Event}" />
-    internal class EventRepository : GenericRepository<Event>, IEventRepository
+	internal class EventRepository : GenericRepository<Event>, IEventRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EventRepository" /> class.
@@ -51,6 +52,17 @@ namespace EventService.Infrastructure.Repository
         }
 
         /// <summary>
+        /// Gets all active events asynchronous.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>
+        /// A list of active events.
+        /// </returns>
+        public async Task<List<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken)
+        {
+            return await this.Entities.ToListAsync(cancellationToken);
+        }
+        
         /// Gets the by identifier asynchronous.
         /// </summary>
         /// <param name="eventid">The eventid.</param>

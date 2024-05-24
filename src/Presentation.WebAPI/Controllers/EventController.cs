@@ -18,6 +18,7 @@ namespace EventService.Presentation.WebAPI.Controllers
     using EventService.Presentation.WebAPI.Dto.Input;
     using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
     using EventService.Presentation.WebAPI.Dto.Output;
+    using EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery;
     using EventService.Presentation.WebAPI.Query.ReadEventCommand;
     using EventService.Presentation.WebAPI.Utils;
     using MediatR;
@@ -175,6 +176,23 @@ namespace EventService.Presentation.WebAPI.Controllers
             return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
         }
 
+        /// <summary>
+        /// Gets all active events.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpGet("events")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAllActiveEvents(CancellationToken cancellationToken)
+        {
+            var events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
+
+            return Ok(events);
+        }
+        
         /// <summary>
         /// Reads the event asynchronous.
         /// </summary>
