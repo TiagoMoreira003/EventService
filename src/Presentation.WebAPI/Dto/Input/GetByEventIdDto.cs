@@ -10,7 +10,7 @@
 namespace EventService.Presentation.WebAPI.Dto.Input
 {
     /// <summary>
-    ///   <see cref="GetByEventIdDto" />
+    /// <see cref="GetByEventIdDto" />
     /// </summary>
     public class GetByEventIdDto
     {

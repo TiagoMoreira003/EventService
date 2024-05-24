@@ -19,6 +19,7 @@ namespace EventService.Presentation.WebAPI.Controllers
     using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
     using EventService.Presentation.WebAPI.Dto.Output;
     using EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery;
+    using EventService.Presentation.WebAPI.Query.ReadEventCommand;
     using EventService.Presentation.WebAPI.Utils;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -190,7 +191,27 @@ namespace EventService.Presentation.WebAPI.Controllers
             var events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
 
             return Ok(events);
+        }
+        
+        /// <summary>
+        /// Reads the event asynchronous.
+        /// </summary>
+        /// <param name="filters">The filters.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        [HttpGet("{eventId}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ReadEventAsync([FromQuery] ReadEventInputDto filters, CancellationToken cancellationToken)
+        {
+            var eventDetails = await this.mediator.Send(new ReadEventQuery
+            {
+                EventId = filters.EventId
+            }, cancellationToken);
 
+            return this.Ok(eventDetails);
         }
     }
 }
