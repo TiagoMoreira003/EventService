@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="GetAllEventsOutputDto.cs" company="KROWN">
-//     Copyright (c) KROWN. All rights reserved.
+// Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
 // GetAllEventsOutputDto
@@ -62,7 +62,7 @@ namespace EventService.Presentation.WebAPI.Dto.Output
         /// <value>
         /// The artists.
         /// </value>
-        private List<string> Artists { get; init; }
+        public List<string> Artists { get; init; }
 
         /// <summary>
         /// Gets the description.
@@ -70,7 +70,7 @@ namespace EventService.Presentation.WebAPI.Dto.Output
         /// <value>
         /// The description.
         /// </value>
-        private string Description { get; init; }
+        public string Description { get; init; }
 
         /// <summary>
         /// Gets the name.
@@ -78,6 +78,6 @@ namespace EventService.Presentation.WebAPI.Dto.Output
         /// <value>
         /// The name.
         /// </value>
-        private string Name { get; init; }
+        public string Name { get; init; }
     }
 }
