@@ -64,20 +64,20 @@ namespace EventService.Presentation.WebAPI.Dto.Output
         /// </value>
         public List<string> Artists { get; init; }
 
-        /// <summary>
-        /// Gets the description.
-        /// </summary>
-        /// <value>
-        /// The description.
-        /// </value>
-        public string Description { get; init; }
+		/// <summary>
+		/// Gets the description.
+		/// </summary>
+		/// <value>
+		/// The description.
+		/// </value>
+		public string Description { get; init; }
 
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name { get; init; }
+		/// <summary>
+		/// Gets the name.
+		/// </summary>
+		/// <value>
+		/// The name.
+		/// </value>
+		public string Name { get; init; }
     }
 }

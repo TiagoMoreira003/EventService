@@ -183,16 +183,15 @@ namespace EventService.Presentation.WebAPI.Controllers
         /// <returns></returns>
         [HttpGet("events")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(EventProfileOutput), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetAllActiveEvents(CancellationToken cancellationToken)
         {
-			IEnumerable<Event> events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
+            var events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
 
-			return this.Ok(this.mapper.Map<IEnumerable<EventProfileOutput>>(events));
-		}
+            return Ok(events);
+        }
         
         /// <summary>
         /// Reads the event asynchronous.
@@ -214,5 +213,5 @@ namespace EventService.Presentation.WebAPI.Controllers
 
             return this.Ok(eventDetails);
         }
-	}
+    }
 }
