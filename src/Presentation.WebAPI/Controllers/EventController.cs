@@ -125,7 +125,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="filters">The filters.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-		[HttpDelete("{eventId}")]
+		[HttpDelete("{EventId}")]
 		[ProducesResponseType((int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]

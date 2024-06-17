@@ -1,30 +1,30 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ReadEventDtoValidator.cs" company="KROWN">
+// <copyright file="GetByEventIdDtoValidator.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// ReadEventDtoValidator
+// GetByEventIdDtoValidator
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Presentation.WebAPI.Validation.Event
 {
-    using EventService.Presentation.WebAPI.Dto.Input;
-    using FluentValidation;
+	using EventService.Presentation.WebAPI.Dto.Input;
+	using FluentValidation;
 
-    /// <summary>
-    /// <see cref="CreateEventDtoValidator" />
-    /// </summary>
-    /// <seealso cref="AbstractValidator{CreateEventDto}" />
-    public class GetByEventIdDtoValidator : AbstractValidator<GetByEventIdDto>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetByEventIdDtoValidator" /> class.
-        /// </summary>
-        public GetByEventIdDtoValidator()
-        {
-            RuleFor(x => x.EventId)
-                .NotEmpty()
-                    .WithMessage("EventId shouldn't be null.");
-        }
-    }
+	/// <summary>
+	/// <see cref="CreateEventDtoValidator" />
+	/// </summary>
+	/// <seealso cref="AbstractValidator{CreateEventDto}" />
+	public class GetByEventIdDtoValidator : AbstractValidator<GetByEventIdDto>
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="GetByEventIdDtoValidator" /> class.
+		/// </summary>
+		public GetByEventIdDtoValidator()
+		{
+			RuleFor(x => x.EventId)
+				.NotEmpty()
+					.WithMessage("EventId shouldn't be null.");
+		}
+	}
 }
