@@ -17,7 +17,7 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
     /// <see cref="GetAllActiveEventsQueryHandler" />
     /// </summary>
     /// <seealso cref="IRequestHandler{GetAllActiveEventsCommand}" />
-    public class GetAllActiveEventsQueryHandler : IRequestHandler<GetAllActiveEventsQuery, List<Event>>
+    public class GetAllActiveEventsQueryHandler : IRequestHandler<GetAllActiveEventsQuery, IEnumerable<Event>>
     {
         /// <summary>
         /// The event repository
@@ -43,7 +43,7 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
         /// </returns>
         /// <exception cref="EventService.Domain.Exceptions.NotFoundException">No exist no one event</exception>
         /// <exception cref="NotFoundException">The team with id {command.EventId} wasn't found.</exception>
-        public async Task<List<Event>> Handle(GetAllActiveEventsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Event>> Handle(GetAllActiveEventsQuery request, CancellationToken cancellationToken)
         {
             var events = await _eventRepository.GetAllActiveEventsAsync(cancellationToken);
 

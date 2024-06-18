@@ -13,8 +13,8 @@ namespace EventService.Infrastructure.Repository
     using EventService.Domain.AggregateModels.Event.Repository;
     using EventService.Domain.AggregateModels.Event.Repository.Models;
     using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -58,11 +58,13 @@ namespace EventService.Infrastructure.Repository
         /// <returns>
         /// A list of active events.
         /// </returns>
-        public async Task<List<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken)
         {
-            return await this.Entities.ToListAsync(cancellationToken);
+            return await this.Entities
+               .Include(e => e.Location)
+               .ToListAsync(cancellationToken);
         }
-        
+
         /// Gets the by identifier asynchronous.
         /// </summary>
         /// <param name="eventid">The eventid.</param>

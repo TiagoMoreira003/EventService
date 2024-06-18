@@ -15,7 +15,7 @@ namespace EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery
     /// <see cref="GetAllActiveEventsQuery" />
     /// </summary>
     /// <seealso cref="IRequest{List{Event}}" />
-    public class GetAllActiveEventsQuery : IRequest<List<Event>>
+    public class GetAllActiveEventsQuery : IRequest<IEnumerable<Event>>
     {
     }
 }
