@@ -146,11 +146,11 @@ namespace EventService.Presentation.WebAPI.Controllers
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
         [HttpGet("events")]
-        //[ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(IEnumerable<EventPoint>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        //[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        //[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetAllActiveEvents(CancellationToken cancellationToken)
         {
             IEnumerable<Event> events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
@@ -176,7 +176,7 @@ namespace EventService.Presentation.WebAPI.Controllers
                 EventId = filters.EventId
             }, cancellationToken);
 
-            return this.Ok(eventDetails);
+            return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
         }
 
         /// <summary>
