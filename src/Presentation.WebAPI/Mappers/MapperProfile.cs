@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MapperProfile.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
@@ -26,11 +26,11 @@ namespace EventService.Presentation.WebAPI.Mappers
 		public MapperProfile()
 		{
 			this.CreateMap<Event, EventDto>();
-			this.CreateMap<Event, EventDetailsDto>();
 			this.CreateMap<Location, LocationOutputDto>();
 			this.CreateMap<EventDate, EventDateOutputDto>();
+			this.CreateMap<Event, EventDetailsDto>();
 			this.CreateMap<Event, EventProfileOutput>();
-			this.CreateMap<Address, AddressOutputDto>();
+
 		}
 	}
 }

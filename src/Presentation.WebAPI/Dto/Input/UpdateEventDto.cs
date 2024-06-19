@@ -11,6 +11,7 @@ namespace EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto
 {
 	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
+	using EventService.Presentation.WebAPI.Dto.Input;
 	using MediatR;
 
 	/// <summary>
@@ -36,12 +37,20 @@ namespace EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto
 		public string Description { get; init; }
 
 		/// <summary>
-		/// Gets the event date.
+		/// Gets the date event.
 		/// </summary>
 		/// <value>
-		/// The event date.
+		/// The date event.
 		/// </value>
 		public EventDateDto EventDate { get; init; }
+
+		/// <summary>
+		/// Gets the event identifier.
+		/// </summary>
+		/// <value>
+		/// The event identifier.
+		/// </value>
+		public Guid EventId { get; init; }
 
 		/// <summary>
 		/// Gets the location.

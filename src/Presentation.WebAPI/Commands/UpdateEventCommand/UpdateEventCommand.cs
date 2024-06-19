@@ -37,10 +37,10 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		public string Description { get; init; }
 
 		/// <summary>
-		/// Gets the event date.
+		/// Gets the date event.
 		/// </summary>
 		/// <value>
-		/// The event date.
+		/// The date event.
 		/// </value>
 		public EventDateDto EventDate { get; init; }
 
@@ -52,6 +52,7 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		/// </value>
 		public Guid EventId { get; init; }
 
+		/// </value>
 		/// <summary>
 		/// Gets the location.
 		/// </summary>

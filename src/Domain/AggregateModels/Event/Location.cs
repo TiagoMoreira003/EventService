@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Location.cs" company="KROWN">
 //     Copyright (c) KROWN. All rights reserved.
 // </copyright>
@@ -8,7 +8,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels.Event
 {
-	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.SeedWork;
 	using System.Collections.Generic;
 
@@ -93,11 +92,11 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <param name="street">The street.</param>
 		/// <param name="state">The state.</param>
 		/// <param name="postalCode">The postal code.</param>
-		public void Update(LocationModel model)
+		public void Update(double longitude, double latitude, string street, string state, string postalCode)
 		{
-			this.Longitude = model.Longitude;
-			this.Latitude = model.Latitude;
-			this.Address.Update(model.Address.Street, model.Address.State, model.Address.PostalCode);
+			this.Longitude = longitude;
+			this.Latitude = latitude;
+			this.Address.Update(street, state, postalCode);
 		}
 
 		/// <summary>

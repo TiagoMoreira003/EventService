@@ -7,10 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using EventService.Domain.SeedWork;
+
 namespace EventService.Domain.AggregateModels.Event.Repository
 {
-	using EventService.Domain.SeedWork;
-
 	/// <summary>
 	/// <see cref="ILocationRepository"/>
 	/// </summary>
