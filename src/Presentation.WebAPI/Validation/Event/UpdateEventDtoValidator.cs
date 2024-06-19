@@ -23,6 +23,19 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 		/// </summary>
 		public UpdateEventDtoValidator()
 		{
+			RuleFor(x => x.EventDate)
+				.NotNull();
+
+			RuleFor(x => x.EventDate.StartDate)
+				.GreaterThan(DateTime.Now)
+					.WithMessage("The start date should be greater than the current date.")
+				.NotNull()
+					.WithMessage("StartDate shouldn't be null");
+
+			RuleFor(x => x.EventDate.EndDate)
+				.GreaterThan(x => x.EventDate.StartDate)
+					.WithMessage("End date should be greater than start date");
+
 			RuleFor(x => x.Name)
 				.NotEmpty()
 					.WithMessage("The name shouldn't be null")

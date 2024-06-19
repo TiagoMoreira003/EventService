@@ -53,6 +53,13 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 				throw new NotFoundException($"The event with id {request.EventId} doesn't exist!");
 			}
 
+			Location existingLocation = await this.eventRepository.GetLocationAsync(request.EventId, cancellationToken);
+
+			if (existingLocation is null)
+			{
+				throw new NotFoundException($"There is not a location associated with the event with id {request.EventId}");
+			}
+
 			existingEvent.Update(new AllPropertiesModel
 			{
 				Name = request.Name,
@@ -62,13 +69,20 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 					StartDate = request.EventDate.StartDate,
 					EndDate = request.EventDate.EndDate
 				},
-				Location = new LocationModel
-				{
-					Latitude = request.Location.Latitude,
-					Longitude = request.Location.Longitude
-				},
 				MusicType = request.MusicType,
 				Artists = request.Artists
+			});
+
+			existingLocation.Update(new LocationModel
+			{
+				Latitude = request.Location.Latitude,
+				Longitude = request.Location.Longitude,
+				Address = new AddressModel
+				{
+					Street = request.Location.Address.Street,
+					State = request.Location.Address.State,
+					PostalCode = request.Location.Address.PostalCode
+				}
 			});
 
 			await this.eventRepository.Update(existingEvent, cancellationToken);
