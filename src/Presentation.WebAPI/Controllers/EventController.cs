@@ -8,178 +8,178 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace EventService.Presentation.WebAPI.Controllers
-{		
-    using AutoMapper;
-    using EventService.Domain.AggregateModels.Event;
-    using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
-    using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
-    using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
-    using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
-    using EventService.Presentation.WebAPI.Dto.Input;
-    using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
-    using EventService.Presentation.WebAPI.Dto.Output;
-    using EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery;
-    using EventService.Presentation.WebAPI.Query.ReadEventCommand;
-    using EventService.Presentation.WebAPI.Utils;
-    using MediatR;
-    using Microsoft.AspNetCore.Mvc;
-    using System.Net;
+{
+	using AutoMapper;
+	using EventService.Domain.AggregateModels.Event;
+	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
+	using EventService.Presentation.WebAPI.Commands.CreateEventCommand;
+	using EventService.Presentation.WebAPI.Commands.DeleteEventCommand;
+	using EventService.Presentation.WebAPI.Commands.UpdateEventCommand;
+	using EventService.Presentation.WebAPI.Dto.Input;
+	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
+	using EventService.Presentation.WebAPI.Dto.Output;
+	using EventService.Presentation.WebAPI.Query.GetAllActiveEventsQuery;
+	using EventService.Presentation.WebAPI.Query.ReadEventCommand;
+	using EventService.Presentation.WebAPI.Utils;
+	using MediatR;
+	using Microsoft.AspNetCore.Mvc;
+	using System.Net;
 
-    /// <summary>
-    /// <see cref="EventController" />
-    /// </summary>
-    /// <seealso cref="Controller" />
-    [ApiController]
-    [Route("api/v1/Event")]
-    public class EventController : Controller
-    {
-        /// <summary>
-        /// The mapper
-        /// </summary>
-        private readonly IMapper mapper;
+	/// <summary>
+	/// <see cref="EventController" />
+	/// </summary>
+	/// <seealso cref="Controller" />
+	[ApiController]
+	[Route("api/v1/Event")]
+	public class EventController : Controller
+	{
+		/// <summary>
+		/// The mapper
+		/// </summary>
+		private readonly IMapper mapper;
 
-        /// <summary>
-        /// The mediator
-        /// </summary>
-        private readonly IMediator mediator;
+		/// <summary>
+		/// The mediator
+		/// </summary>
+		private readonly IMediator mediator;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EventController"/> class.
-        /// </summary>
-        /// <param name="mapper">The mapper.</param>
-        /// <param name="mediator">The mediator.</param>
-        public EventController(
-            IMapper mapper,
-            IMediator mediator)
-        {
-            this.mapper = mapper;
-            this.mediator = mediator;
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="EventController"/> class.
+		/// </summary>
+		/// <param name="mapper">The mapper.</param>
+		/// <param name="mediator">The mediator.</param>
+		public EventController(
+			IMapper mapper,
+			IMediator mediator)
+		{
+			this.mapper = mapper;
+			this.mediator = mediator;
+		}
 
-        /// <summary>
-        /// Adds the details event asynchronous.
-        /// </summary>
-        /// <param name="eventId">The event identifier.</param>
-        /// <param name="addDetailsEventDto">The add details event dto.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
+		/// <summary>
+		/// Adds the details event asynchronous.
+		/// </summary>
+		/// <param name="eventId">The event identifier.</param>
+		/// <param name="addDetailsEventDto">The add details event dto.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
 
-        [HttpPut("{eventId}")]
-        [ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
-        {
-            Event eventDetails = await this.mediator.Send(new AddDetailsEventCommand
-            {
-                MusicType = addDetailsEventDto.MusicType,
-                Description = addDetailsEventDto.Description,
-                Name = addDetailsEventDto.Name,
-                Artists = addDetailsEventDto.Artists,
-                Address = new AddressDto
-                {
-                    Street = addDetailsEventDto.Location.Address.Street,
-                    State = addDetailsEventDto.Location.Address.State,
-                    PostalCode = addDetailsEventDto.Location.Address.PostalCode,
-                },
-                EventId = eventId,
-            }, cancellationToken);
+		[HttpPut("{eventId}")]
+		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
+		{
+			Event eventDetails = await this.mediator.Send(new AddDetailsEventCommand
+			{
+				MusicType = addDetailsEventDto.MusicType,
+				Description = addDetailsEventDto.Description,
+				Name = addDetailsEventDto.Name,
+				Artists = addDetailsEventDto.Artists,
+				Address = new AddressDto
+				{
+					Street = addDetailsEventDto.Location.Address.Street,
+					State = addDetailsEventDto.Location.Address.State,
+					PostalCode = addDetailsEventDto.Location.Address.PostalCode,
+				},
+				EventId = eventId,
+			}, cancellationToken);
 
-            return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
-        }
+			return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
+		}
 
-        /// <summary>
-        /// Creates the event asynchronous.
-        /// </summary>
-        /// <param name="createEventDto">The create event dto.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
-        [HttpPost]
-        [ProducesResponseType(typeof(EventDto), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> CreateEventAsync([FromBody] CreateEventDto createEventDto, CancellationToken cancellationToken)
-        {
-            Event newevent = await this.mediator.Send(new CreateEventCommand
-            {
-                TenantId = createEventDto.TenantId,
-                EventDate = new EventDateDto
-                {
-                    StartDate = createEventDto.EventDate.StartDate,
-                    EndDate = createEventDto.EventDate.EndDate,
-                },
-                GeoCoordinates = new GeoCoordinatesDto
-                {
-                    Latitude = createEventDto.GeoCoordinates.Latitude,
-                    Longitude = createEventDto.GeoCoordinates.Longitude,
-                },
-            },
-            cancellationToken);
+		/// <summary>
+		/// Creates the event asynchronous.
+		/// </summary>
+		/// <param name="createEventDto">The create event dto.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpPost]
+		[ProducesResponseType(typeof(EventDto), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> CreateEventAsync([FromBody] CreateEventDto createEventDto, CancellationToken cancellationToken)
+		{
+			Event newevent = await this.mediator.Send(new CreateEventCommand
+			{
+				TenantId = createEventDto.TenantId,
+				EventDate = new EventDateDto
+				{
+					StartDate = createEventDto.EventDate.StartDate,
+					EndDate = createEventDto.EventDate.EndDate,
+				},
+				GeoCoordinates = new GeoCoordinatesDto
+				{
+					Latitude = createEventDto.GeoCoordinates.Latitude,
+					Longitude = createEventDto.GeoCoordinates.Longitude,
+				},
+			},
+			cancellationToken);
 
-            return this.Ok(this.mapper.Map<EventDto>(newevent));
-        }
+			return this.Ok(this.mapper.Map<EventDto>(newevent));
+		}
 
-        /// <summary>
-        /// Deletes the event asynchronous.
-        /// </summary>
-        /// <param name="filters">The filters.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
-        [HttpDelete("{EventId}")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> DeleteEventAsync([FromRoute] GetByEventIdDto filters, CancellationToken cancellationToken)
-        {
-            await this.mediator.Publish(new DeleteEventCommand
-            {
-                EventId = filters.EventId,
-            }, cancellationToken);
+		/// <summary>
+		/// Deletes the event asynchronous.
+		/// </summary>
+		/// <param name="filters">The filters.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpDelete("{EventId}")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> DeleteEventAsync([FromRoute] GetByEventIdDto filters, CancellationToken cancellationToken)
+		{
+			await this.mediator.Publish(new DeleteEventCommand
+			{
+				EventId = filters.EventId,
+			}, cancellationToken);
 
-            return this.Ok();
-        }
+			return this.Ok();
+		}
 
-        /// <summary>
-        /// Gets all active events.
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
-        [HttpGet("events")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(IEnumerable<EventPoint>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> GetAllActiveEvents(CancellationToken cancellationToken)
-        {
-            IEnumerable<Event> events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
+		/// <summary>
+		/// Gets all active events.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpGet("events")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(IEnumerable<EventPoint>), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> GetAllActiveEvents(CancellationToken cancellationToken)
+		{
+			IEnumerable<Event> events = await this.mediator.Send(new GetAllActiveEventsQuery(), cancellationToken);
 
-            return this.Ok(this.mapper.Map<IEnumerable<EventPoint>>(events));
-        }
+			return this.Ok(this.mapper.Map<IEnumerable<EventPoint>>(events));
+		}
 
-        /// <summary>
-        /// Reads the event asynchronous.
-        /// </summary>
-        /// <param name="filters">The filters.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
-        [HttpGet("{eventId}")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> ReadEventAsync([FromQuery] ReadEventInputDto filters, CancellationToken cancellationToken)
-        {
-            var eventDetails = await this.mediator.Send(new ReadEventQuery
-            {
-                EventId = filters.EventId
-            }, cancellationToken);
+		/// <summary>
+		/// Reads the event asynchronous.
+		/// </summary>
+		/// <param name="filters">The filters.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpGet("{eventId}")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.NotFound)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> ReadEventAsync([FromQuery] ReadEventInputDto filters, CancellationToken cancellationToken)
+		{
+			var eventDetails = await this.mediator.Send(new ReadEventQuery
+			{
+				EventId = filters.EventId
+			}, cancellationToken);
 
-            return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
-        }
-        
-        /// <summary>
+			return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
+		}
+
+		/// <summary>
 		/// Updates the event asynchronous.
 		/// </summary>
 		/// <param name="eventId">The event identifier.</param>
@@ -220,4 +220,5 @@ namespace EventService.Presentation.WebAPI.Controllers
 
 			return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
 		}
+	}
 }
