@@ -9,28 +9,31 @@
 
 namespace EventService.Presentation.WebAPI.Mappers
 {
-	using AutoMapper;
-	using EventService.Domain.AggregateModels;
-	using EventService.Domain.AggregateModels.Event;
-	using EventService.Presentation.WebAPI.Dto.Output;
+    using AutoMapper;
+    using EventService.Domain.AggregateModels;
+    using EventService.Domain.AggregateModels.Event;
+    using EventService.Presentation.WebAPI.Dto.Output;
 
-	/// <summary>
-	/// <see cref="MapperProfile"/>
-	/// </summary>
-	/// <seealso cref="Profile"/>
-	public class MapperProfile : Profile
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MapperProfile"/> class.
-		/// </summary>
-		public MapperProfile()
-		{
-			this.CreateMap<Event, EventDto>();
-			this.CreateMap<Location, LocationOutputDto>();
-			this.CreateMap<EventDate, EventDateOutputDto>();
-			this.CreateMap<Event, EventDetailsDto>();
-			this.CreateMap<Event, EventProfileOutput>();
-			this.CreateMap<Address, AddressOutputDto>();
-		}
-	}
+    /// <summary>
+    /// <see cref="MapperProfile"/>
+    /// </summary>
+    /// <seealso cref="Profile"/>
+    public class MapperProfile : Profile
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapperProfile"/> class.
+        /// </summary>
+        public MapperProfile()
+        {
+            this.CreateMap<Event, EventPoint>();
+            this.CreateMap<Event, EventDto>();
+            this.CreateMap<Location, LocationWAdress>();
+            this.CreateMap<Location, LocationOutputDto>();
+            this.CreateMap<EventDate, EventDateOutputDto>();
+            this.CreateMap<Event, EventDetailsDto>();
+		      	this.CreateMap<Address, AddressOutputDto>();
+            
+
+        }
+    }
 }

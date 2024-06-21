@@ -7,22 +7,22 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using EventService.Domain.AggregateModels.Event.Repository.Models;
-using EventService.Domain.SeedWork;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace EventService.Domain.AggregateModels.Event.Repository
 {
+
+  using EventService.Domain.AggregateModels.Event.Repository.Models;
+  using EventService.Domain.SeedWork;
+  using System;
+  using System.Collections.Generic;
+  using System.Threading;
+  using System.Threading.Tasks;
 	/// <summary>
 	///   <see cref="IEventRepository" />
 	/// </summary>
 	/// <seealso cref="IRepository{Event}" />
 	public interface IEventRepository : IRepository<Event>
 	{
-		Task<List<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken);
+    Task<IEnumerable<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken);    
 
 		Task<Event> GetByIdAsync(Guid eventId, CancellationToken cancellationToken);
 

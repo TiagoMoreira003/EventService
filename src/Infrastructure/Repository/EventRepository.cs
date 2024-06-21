@@ -35,27 +35,6 @@ namespace EventService.Infrastructure.Repository
 		{
 		}
 
-		/// <summary>
-		/// Gets all active events asynchronous.
-		/// </summary>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A list of active events.
-		/// </returns>
-		public async Task<List<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken)
-		{
-			return await this.Entities.ToListAsync(cancellationToken);
-		}
-
-		/// Gets the by identifier asynchronous.
-		/// </summary>
-		/// <param name="eventid">The eventid.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
-		public async Task<Event> GetByIdAsync(Guid eventid, CancellationToken cancellationToken)
-		{
-			return await this.Entities.SingleOrDefaultAsync(t => t.UUId == eventid, cancellationToken);
-		}
 
 		/// <summary>
 		/// Gets the by identifiers asynchronous.
@@ -90,4 +69,28 @@ namespace EventService.Infrastructure.Repository
 			return Location;
 		}
 	}
+        /// <summary>
+        /// Gets all active events asynchronous.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>
+        /// A list of active events.
+        /// </returns>
+        public async Task<IEnumerable<Event>> GetAllActiveEventsAsync(CancellationToken cancellationToken)
+        {
+            return await this.Entities
+               .Include(e => e.Location)
+               .ToListAsync(cancellationToken);
+        }
+
+        /// Gets the by identifier asynchronous.
+        /// </summary>
+        /// <param name="eventid">The eventid.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        public async Task<Event> GetByIdAsync(Guid eventid, CancellationToken cancellationToken)
+        {
+            return await this.Entities.SingleOrDefaultAsync(t => t.UUId == eventid, cancellationToken);
+        }
+    }
 }
