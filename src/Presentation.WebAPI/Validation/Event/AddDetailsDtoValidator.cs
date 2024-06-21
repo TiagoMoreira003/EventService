@@ -37,14 +37,6 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 				.NotEmpty()
 				.WithMessage("Description shouldn't be null.");
 
-			RuleFor(x => x.EventId)
-				.NotEmpty()
-					.WithMessage("EventId shouldn't be null.");
-
-			RuleFor(x => x.Location)
-				.NotNull()
-					.WithMessage("Location shouldn't be null.");
-
 			RuleFor(x => x.Name)
 				.MaximumLength(20)
 				.WithMessage("Name should be less than 20 characters")

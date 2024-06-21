@@ -79,14 +79,10 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <summary>
 		/// Adds the address.
 		/// </summary>
-		/// <param name="address">The address.</param>
-		public void AddAddress(Address address)
-		{
-			this.Address = address;
-		}
-
+		/// <param name="model">The model.</param>
 		public void AddAddress(AddressModel model)
 		{
+			this.Address = new Address(null, null, null);
 			this.Address.AddAdress(model);
 		}
 

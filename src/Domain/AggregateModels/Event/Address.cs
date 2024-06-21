@@ -55,6 +55,10 @@ namespace EventService.Domain.AggregateModels
 		/// </value>
 		public string Street { get; private set; }
 
+		/// <summary>
+		/// Adds the adress.
+		/// </summary>
+		/// <param name="model">The model.</param>
 		public void AddAdress(AddressModel model)
 		{
 			this.Street = model.Street;

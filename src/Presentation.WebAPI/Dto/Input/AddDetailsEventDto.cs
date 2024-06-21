@@ -17,6 +17,14 @@ namespace EventService.Presentation.WebAPI.Dto.Input
 	public class AddDetailsEventDto
 	{
 		/// <summary>
+		/// Gets the address.
+		/// </summary>
+		/// <value>
+		/// The address.
+		/// </value>
+		public AddressDto Address { get; init; }
+
+		/// <summary>
 		/// Gets the artists.
 		/// </summary>
 		/// <value>
@@ -33,30 +41,6 @@ namespace EventService.Presentation.WebAPI.Dto.Input
 		public string Description { get; init; }
 
 		/// <summary>
-		/// Gets the date event.
-		/// </summary>
-		/// <value>
-		/// The date event.
-		/// </value>
-		public EventDateDto EventDate { get; init; }
-
-		/// <summary>
-		/// Gets the event identifier.
-		/// </summary>
-		/// <value>
-		/// The event identifier.
-		/// </value>
-		public Guid EventId { get; init; }
-
-		/// <summary>
-		/// Gets the geo coordinates.
-		/// </summary>
-		/// <value>
-		/// The geo coordinates.
-		/// </value>
-		public LocationDto Location { get; init; }
-
-		/// <summary>
 		/// Gets the type of the music.
 		/// </summary>
 		/// <value>
@@ -71,13 +55,5 @@ namespace EventService.Presentation.WebAPI.Dto.Input
 		/// The name.
 		/// </value>
 		public string Name { get; init; }
-
-		/// <summary>
-		/// Gets the tenant identifier.
-		/// </summary>
-		/// <value>
-		/// The tenant identifier.
-		/// </value>
-		public Guid TenantId { get; init; }
 	}
 }

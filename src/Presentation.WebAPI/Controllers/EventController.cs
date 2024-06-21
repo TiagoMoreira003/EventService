@@ -78,9 +78,9 @@ namespace EventService.Presentation.WebAPI.Controllers
 				Artists = addDetailsEventDto.Artists,
 				Address = new AddressDto
 				{
-					Street = addDetailsEventDto.Location.Address.Street,
-					State = addDetailsEventDto.Location.Address.State,
-					PostalCode = addDetailsEventDto.Location.Address.PostalCode,
+					Street = addDetailsEventDto.Address.Street,
+					State = addDetailsEventDto.Address.State,
+					PostalCode = addDetailsEventDto.Address.PostalCode,
 				},
 				EventId = eventId,
 			}, cancellationToken);
