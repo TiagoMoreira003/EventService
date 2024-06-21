@@ -136,7 +136,7 @@ namespace EventService.Domain.AggregateModels.Event
 		{
 			if (string.IsNullOrEmpty(artist))
 			{
-				throw new ArgumentNullException(nameof(artist), "The artist name is null.");
+				return;
 			}
 
 			if (this.ArtistExists(artist))
@@ -153,12 +153,11 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <param name="musicType">Type of the music.</param>
 		/// <param name="description">The description.</param>
 		/// <param name="name">The name.</param>
-		public void AddDetails(MusicType musicType, string description, string name, Address address)
+		public void AddDetails(MusicType musicType, string description, string name)
 		{
 			this.MusicType = musicType;
 			this.Description = description;
 			this.Name = name;
-			this.Location.AddAddress(address);
 		}
 
 		/// <summary>

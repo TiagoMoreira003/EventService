@@ -9,9 +9,9 @@
 
 namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 {
-	using EventService.Domain.AggregateModels;
 	using EventService.Domain.AggregateModels.Event;
 	using EventService.Domain.AggregateModels.Event.Repository;
+	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.Exceptions;
 	using MediatR;
 
@@ -53,19 +53,29 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 				throw new NotFoundException($"The event with {request.EventId} does not exist");
 			}
 
+			Location existingLocation = await this.eventRepository.GetLocationAsync(request.EventId, cancellationToken);
+
+			if (existingLocation is null)
+			{
+				throw new NotFoundException($"The location with {request.EventId} does not exist");
+			}
+
 			existingEvent.AddDetails(
 				request.MusicType,
 				request.Description,
-				request.Name,
-				new Address(
-					request.Location.Address.Street,
-					request.Location.Address.State,
-					request.Location.Address.PostalCode));
-
+				request.Name
+				);
 			foreach (string artist in request.Artists)
 			{
 				existingEvent.AddArtist(artist);
 			}
+
+			existingLocation.AddAddress(new AddressModel
+			{
+				Street = request.Address.Street,
+				State = request.Address.State,
+				PostalCode = request.Address.PostalCode
+			});
 
 			await this.eventRepository.Update(existingEvent, cancellationToken);
 

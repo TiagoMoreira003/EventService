@@ -27,33 +27,33 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 				.NotNull()
 					.WithMessage("Address shouldn't be null.");
 
-			RuleFor(x => x.Artists)
+			RuleFor(x => x.Address.Street)
 				.NotEmpty()
-					.WithMessage("Artists shouldn't be null.");
+					.WithMessage("Street shouldn't be null.")
+					.MaximumLength(50)
+					.WithMessage("Street should be less than 50 characters");
+
+			RuleFor(x => x.Address.State)
+				.NotEmpty()
+					.WithMessage("State shouldn't be null.")
+					.MaximumLength(30)
+					.WithMessage("State should be less than 30 characters");
+
+			RuleFor(x => x.Address.PostalCode)
+				.NotEmpty()
+					.WithMessage("PostalCode shouldn't be null.")
+					.MaximumLength(10)
+					.WithMessage("PostalCode should be less than 10 characters");
 
 			RuleFor(x => x.Description)
 				.MaximumLength(300)
-				.WithMessage("Description should be less than 300 characters")
-				.NotEmpty()
-				.WithMessage("Description shouldn't be null.");
-
-			RuleFor(x => x.EventId)
-				.NotEmpty()
-					.WithMessage("EventId shouldn't be null.");
-
-			RuleFor(x => x.Location)
-				.NotNull()
-					.WithMessage("Location shouldn't be null.");
+				.WithMessage("Description should be less than 300 characters");
 
 			RuleFor(x => x.Name)
 				.MaximumLength(20)
 				.WithMessage("Name should be less than 20 characters")
 				.NotEmpty()
 				.WithMessage("Name shouldn't be null.");
-
-			RuleFor(x => x.MusicType)
-				.NotEmpty()
-					.WithMessage("MusicType shouldn't be null.");
 		}
 	}
 }

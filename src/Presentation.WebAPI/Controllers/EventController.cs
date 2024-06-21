@@ -56,37 +56,29 @@ namespace EventService.Presentation.WebAPI.Controllers
             this.mediator = mediator;
         }
 
-        /// <summary>
-        /// Adds the details event asynchronous.
-        /// </summary>
-        /// <param name="eventId">The event identifier.</param>
-        /// <param name="addDetailsEventDto">The add details event dto.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
+       	[HttpPut("{eventId}")]
+	     	[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
+		    [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+	   	  [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		    public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
+		    {
+			    Event eventDetails = await this.mediator.Send(new AddDetailsEventCommand
+			    {
+			    	MusicType = addDetailsEventDto.MusicType,
+				    Description = addDetailsEventDto.Description,
+				    Name = addDetailsEventDto.Name,
+				    Artists = addDetailsEventDto.Artists,
+				    Address = new AddressDto
+				    {
+					    Street = addDetailsEventDto.Address.Street,
+					    State = addDetailsEventDto.Address.State,
+					    PostalCode = addDetailsEventDto.Address.PostalCode,
+				    },
+				    EventId = eventId,
+			      }, cancellationToken);
 
-        [HttpPut("{eventId}")]
-        [ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> AddDetailsEventAsync([FromRoute] Guid eventId, [FromBody] AddDetailsEventDto addDetailsEventDto, CancellationToken cancellationToken)
-        {
-            Event eventDetails = await this.mediator.Send(new AddDetailsEventCommand
-            {
-                MusicType = addDetailsEventDto.MusicType,
-                Description = addDetailsEventDto.Description,
-                Name = addDetailsEventDto.Name,
-                Artists = addDetailsEventDto.Artists,
-                Address = new AddressDto
-                {
-                    Street = addDetailsEventDto.Location.Address.Street,
-                    State = addDetailsEventDto.Location.Address.State,
-                    PostalCode = addDetailsEventDto.Location.Address.PostalCode,
-                },
-                EventId = eventId,
-            }, cancellationToken);
-
-            return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
-        }
+			    return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
+		      }
 
         /// <summary>
         /// Creates the event asynchronous.

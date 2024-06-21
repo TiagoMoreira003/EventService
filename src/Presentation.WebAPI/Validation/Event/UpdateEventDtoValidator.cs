@@ -42,13 +42,8 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 						.MaximumLength(20);
 
 			RuleFor(x => x.Description)
-				.NotEmpty()
-					.WithMessage("The description shouldn't be null")
-						.MaximumLength(300);
-
-			RuleFor(x => x.MusicType)
-				.NotEmpty()
-					.WithMessage("The name shouldn't be null");
+				.MaximumLength(300)
+				.WithMessage("Description should be less than 300 characters");
 
 			RuleFor(x => x.Artists)
 				.NotEmpty()
