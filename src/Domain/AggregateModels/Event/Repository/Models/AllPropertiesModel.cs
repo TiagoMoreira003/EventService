@@ -46,7 +46,7 @@ namespace EventService.Domain.AggregateModels.Event.Repository.Models
 		/// <value>
 		/// The location.
 		/// </value>
-		public LocationModel Location { get; init; }
+		//public LocationModel Location { get; init; }
 
 		/// <summary>
 		/// Gets the type of the music.

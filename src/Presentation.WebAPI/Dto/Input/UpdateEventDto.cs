@@ -45,14 +45,6 @@ namespace EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto
 		public EventDateDto EventDate { get; init; }
 
 		/// <summary>
-		/// Gets the event identifier.
-		/// </summary>
-		/// <value>
-		/// The event identifier.
-		/// </value>
-		public Guid EventId { get; init; }
-
-		/// <summary>
 		/// Gets the location.
 		/// </summary>
 		/// <value>

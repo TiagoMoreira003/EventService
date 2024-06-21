@@ -19,6 +19,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
 		<PackageReference Include="RestSharp" Version="108.0.3" />
+
 	</ItemGroup>
 
 	<ItemGroup>

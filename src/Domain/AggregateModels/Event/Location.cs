@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels.Event
 {
+	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.SeedWork;
 	using System.Collections.Generic;
 
@@ -84,19 +85,20 @@ namespace EventService.Domain.AggregateModels.Event
 			this.Address = address;
 		}
 
-		/// <summary>
-		/// Updates the specified longitude.
-		/// </summary>
-		/// <param name="longitude">The longitude.</param>
-		/// <param name="latitude">The latitude.</param>
-		/// <param name="street">The street.</param>
-		/// <param name="state">The state.</param>
-		/// <param name="postalCode">The postal code.</param>
-		public void Update(double longitude, double latitude, string street, string state, string postalCode)
+		public void AddAddress(AddressModel model)
 		{
-			this.Longitude = longitude;
-			this.Latitude = latitude;
-			this.Address.Update(street, state, postalCode);
+			this.Address.AddAdress(model);
+		}
+
+		/// <summary>
+		/// Updates the specified model.
+		/// </summary>
+		/// <param name="model">The model.</param>
+		public void Update(LocationModel model)
+		{
+			this.Longitude = model.Longitude;
+			this.Latitude = model.Latitude;
+			this.Address.UpdateAddress(model.Address.Street, model.Address.State, model.Address.PostalCode);
 		}
 
 		/// <summary>

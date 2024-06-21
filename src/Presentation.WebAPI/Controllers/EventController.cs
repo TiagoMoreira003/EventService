@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace EventService.Presentation.WebAPI.Controllers
-{
+{		
     using AutoMapper;
     using EventService.Domain.AggregateModels.Event;
     using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
@@ -178,41 +178,46 @@ namespace EventService.Presentation.WebAPI.Controllers
 
             return this.Ok(this.mapper.Map<EventDetailsDto>(eventDetails));
         }
-
+        
         /// <summary>
-        /// Updates the event asynchronous.
-        /// </summary>
-        /// <param name="eventId">The event identifier.</param>
-        /// <param name="updateEventDto">The update event dto.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns></returns>
-        [HttpPut("{eventId}/update")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-        public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid eventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
-        {
-            Event existingEvent = await this.mediator.Send(new UpdateEventCommand
-            {
-                EventId = eventId,
-                Name = updateEventDto.Name,
-                Description = updateEventDto.Description,
-                EventDate = new EventDateDto
-                {
-                    StartDate = updateEventDto.EventDate.StartDate,
-                    EndDate = updateEventDto.EventDate.EndDate
-                },
-                Location = new LocationDto
-                {
-                    Latitude = updateEventDto.Location.Latitude,
-                    Longitude = updateEventDto.Location.Longitude
-                },
-                MusicType = updateEventDto.MusicType,
-                Artists = updateEventDto.Artists,
-            }, cancellationToken);
+		/// Updates the event asynchronous.
+		/// </summary>
+		/// <param name="eventId">The event identifier.</param>
+		/// <param name="updateEventDto">The update event dto.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		[HttpPut("{EventId}/update")]
+		[ProducesResponseType((int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
+		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
+		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid EventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
+		{
+			Event existingEvent = await this.mediator.Send(new UpdateEventCommand
+			{
+				EventId = EventId,
+				Name = updateEventDto.Name,
+				Description = updateEventDto.Description,
+				EventDate = new EventDateDto
+				{
+					StartDate = updateEventDto.EventDate.StartDate,
+					EndDate = updateEventDto.EventDate.EndDate
+				},
+				Location = new LocationDto
+				{
+					Latitude = updateEventDto.Location.Latitude,
+					Longitude = updateEventDto.Location.Longitude,
+					Address = new AddressDto
+					{
+						Street = updateEventDto.Location.Address.Street,
+						State = updateEventDto.Location.Address.State,
+						PostalCode = updateEventDto.Location.Address.PostalCode
+					}
+				},
+				MusicType = updateEventDto.MusicType,
+				Artists = updateEventDto.Artists,
+			}, cancellationToken);
 
-            return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
-        }
-    }
+			return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
+		}
 }
