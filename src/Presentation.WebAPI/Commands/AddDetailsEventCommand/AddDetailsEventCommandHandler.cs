@@ -65,7 +65,6 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 				request.Description,
 				request.Name
 				);
-
 			foreach (string artist in request.Artists)
 			{
 				existingEvent.AddArtist(artist);

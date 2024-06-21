@@ -136,7 +136,7 @@ namespace EventService.Domain.AggregateModels.Event
 		{
 			if (string.IsNullOrEmpty(artist))
 			{
-				throw new ArgumentNullException(nameof(artist), "The artist name is null.");
+				return;
 			}
 
 			if (this.ArtistExists(artist))

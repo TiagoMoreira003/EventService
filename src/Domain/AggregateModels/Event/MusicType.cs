@@ -14,6 +14,11 @@ namespace EventService.Domain.AggregateModels
 	public enum MusicType
 	{
 		/// <summary>
+		/// The none
+		/// </summary>
+		None = 0,
+
+		/// <summary>
 		/// The hardstyle
 		/// </summary>
 		Hardstyle = 1,
