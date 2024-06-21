@@ -12,15 +12,15 @@ namespace EventService.Presentation.WebAPI.Validation.Event
     using FluentValidation;
 
     /// <summary>
-    ///   <see cref="ReadEventDtoValidator" />
+    ///   <see cref="GetByEventDtoValidator" />
     /// </summary>
-    /// <seealso cref="AbstractValidator{CreateEventDto}" />
-    public class ReadEventDtoValidator : AbstractValidator<ReadEventInputDto>
+    /// <seealso cref="AbstractValidator{GetByEventIdDto}" />
+    public class GetByEventDtoValidator : AbstractValidator<GetByEventIdDto>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadEventDtoValidator" /> class.
+        /// Initializes a new instance of the <see cref="GetByEventDtoValidator" /> class.
         /// </summary>
-        public ReadEventDtoValidator()
+        public GetByEventDtoValidator()
         {
             RuleFor(x => x.EventId)
                 .NotEmpty()
