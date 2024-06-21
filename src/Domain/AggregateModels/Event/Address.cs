@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Domain.AggregateModels
 {
+	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.SeedWork;
 	using System.Collections.Generic;
 
@@ -54,13 +55,20 @@ namespace EventService.Domain.AggregateModels
 		/// </value>
 		public string Street { get; private set; }
 
+		public void AddAdress(AddressModel model)
+		{
+			this.Street = model.Street;
+			this.State = model.State;
+			this.PostalCode = model.PostalCode;
+		}
+
 		/// <summary>
 		/// Updates the specified street.
 		/// </summary>
 		/// <param name="street">The street.</param>
 		/// <param name="state">The state.</param>
 		/// <param name="postalCode">The postal code.</param>
-		public void Update(string street, string state, string postalCode)
+		public void UpdateAddress(string street, string state, string postalCode)
 		{
 			this.Street = street;
 			this.State = state;

@@ -186,16 +186,16 @@ namespace EventService.Presentation.WebAPI.Controllers
 		/// <param name="updateEventDto">The update event dto.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-		[HttpPut("{eventId}/update")]
+		[HttpPut("{EventId}/update")]
 		[ProducesResponseType((int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid eventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
+		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid EventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
 		{
 			Event existingEvent = await this.mediator.Send(new UpdateEventCommand
 			{
-				EventId = eventId,
+				EventId = EventId,
 				Name = updateEventDto.Name,
 				Description = updateEventDto.Description,
 				EventDate = new EventDateDto
@@ -206,7 +206,13 @@ namespace EventService.Presentation.WebAPI.Controllers
 				Location = new LocationDto
 				{
 					Latitude = updateEventDto.Location.Latitude,
-					Longitude = updateEventDto.Location.Longitude
+					Longitude = updateEventDto.Location.Longitude,
+					Address = new AddressDto
+					{
+						Street = updateEventDto.Location.Address.Street,
+						State = updateEventDto.Location.Address.State,
+						PostalCode = updateEventDto.Location.Address.PostalCode
+					}
 				},
 				MusicType = updateEventDto.MusicType,
 				Artists = updateEventDto.Artists,
