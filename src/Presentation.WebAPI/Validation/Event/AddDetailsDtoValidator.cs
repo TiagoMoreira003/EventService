@@ -9,14 +9,15 @@
 
 namespace EventService.Presentation.WebAPI.Validation.Event
 {
-	using EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand;
+	using EventService.Presentation.WebAPI.Dto.Input;
+	using EventService.Presentation.WebAPI.Validation.Files;
 	using FluentValidation;
 
 	/// <summary>
 	/// <see cref="AddDetailsDtoValidator"/>
 	/// </summary>
-	/// <seealso cref="AbstractValidator{AddDetailsEventCommand}" />
-	public class AddDetailsDtoValidator : AbstractValidator<AddDetailsEventCommand>
+	/// <seealso cref="AbstractValidator{AddDetailsEventDto}" />
+	public class AddDetailsDtoValidator : AbstractValidator<AddDetailsEventDto>
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="AddDetailsDtoValidator"/> class.
@@ -54,6 +55,9 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 				.WithMessage("Name should be less than 20 characters")
 				.NotEmpty()
 				.WithMessage("Name shouldn't be null.");
+
+			RuleFor(x => x.Image)
+				.SetValidator(new ImageValidator());
 		}
 	}
 }
