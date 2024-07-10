@@ -38,6 +38,7 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateImage
 		/// </summary>
 		/// <param name="image">The image.</param>
 		/// <param name="imageId">The image identifier.</param>
+		/// <param name="contentType"></param>
 		public async Task UpdateImageAsync(IFormFile image, Guid imageId, string contentType)
 		{
 			var filePath = Path.GetTempFileName();
