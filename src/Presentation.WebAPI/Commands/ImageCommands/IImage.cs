@@ -15,6 +15,13 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateImage
 	public interface IImage
 	{
 		/// <summary>
+		/// Deletes the image asynchronous.
+		/// </summary>
+		/// <param name="imageId">The image identifier.</param>
+		/// <returns></returns>
+		Task DeleteImageAsync(Guid imageId);
+
+		/// <summary>
 		/// Updates the image asynchronous.
 		/// </summary>
 		/// <param name="image">The image.</param>

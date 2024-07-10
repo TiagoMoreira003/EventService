@@ -22,11 +22,8 @@ namespace EventService.Presentation.WebAPI.Validation.Files
 		/// </summary>
 		public ImageValidator()
 		{
-			RuleFor(x => x.Length).NotNull().LessThanOrEqualTo(100)
-			 .WithMessage("File size is larger than allowed");
-
 			RuleFor(x => x)
-				.Must(file =>
+				.Must(file => file == null ||
 				file.ContentType.Equals("image/jpeg") ||
 				file.ContentType.Equals("image/jpg") ||
 				file.ContentType.Equals("image/png"))

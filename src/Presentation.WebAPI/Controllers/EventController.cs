@@ -199,7 +199,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 		[ProducesResponseType(typeof(EventDetailsDto), (int)HttpStatusCode.OK)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.BadRequest)]
 		[ProducesResponseType(typeof(ErrorMessage), (int)HttpStatusCode.InternalServerError)]
-		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid EventId, [FromBody] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
+		public async Task<IActionResult> UpdateEventAsync([FromRoute] Guid EventId, [FromForm] UpdateEventDto updateEventDto, CancellationToken cancellationToken)
 		{
 			Event existingEvent = await this.mediator.Send(new UpdateEventCommand
 			{
@@ -224,6 +224,7 @@ namespace EventService.Presentation.WebAPI.Controllers
 				},
 				MusicType = updateEventDto.MusicType,
 				Artists = updateEventDto.Artists,
+				Image = updateEventDto.Image,
 			}, cancellationToken);
 
 			return this.Ok(this.mapper.Map<EventDetailsDto>(existingEvent));
