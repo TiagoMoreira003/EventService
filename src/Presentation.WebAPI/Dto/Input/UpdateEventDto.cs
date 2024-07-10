@@ -44,6 +44,14 @@ namespace EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto
 		public EventDateDto EventDate { get; init; }
 
 		/// <summary>
+		/// Gets the image.
+		/// </summary>
+		/// <value>
+		/// The image.
+		/// </value>
+		public IFormFile Image { get; init; }
+
+		/// <summary>
 		/// Gets the location.
 		/// </summary>
 		/// <value>

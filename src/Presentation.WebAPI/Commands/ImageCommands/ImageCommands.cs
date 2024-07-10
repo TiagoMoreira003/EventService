@@ -19,6 +19,21 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateImage
 	public class ImageCommands : IImage
 	{
 		/// <summary>
+		/// Deletes the image asynchronous.
+		/// </summary>
+		/// <param name="imageId">The image identifier.</param>
+		public async Task DeleteImageAsync(Guid imageId)
+		{
+			var requestCloud = new DeleteObjectRequest
+			{
+				BucketName = "eventprofilephoto",
+				Key = imageId.ToString(),
+			};
+
+			await S3Client.s3client().DeleteObjectAsync(requestCloud);
+		}
+
+		/// <summary>
 		/// Updates the image asynchronous.
 		/// </summary>
 		/// <param name="image">The image.</param>

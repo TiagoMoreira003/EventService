@@ -13,6 +13,7 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 	using EventService.Domain.AggregateModels.Event.Repository;
 	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.Exceptions;
+	using EventService.Presentation.WebAPI.Commands.UpdateImage;
 	using MediatR;
 
 	/// <summary>
@@ -27,12 +28,19 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		private readonly IEventRepository eventRepository;
 
 		/// <summary>
+		/// The update image
+		/// </summary>
+		private readonly IImage imageCommands;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="UpdateEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
-		public UpdateEventCommandHandler(IEventRepository eventRepository)
+		/// <param name="updateImage">The update image.</param>
+		public UpdateEventCommandHandler(IEventRepository eventRepository, IImage imageCommands)
 		{
 			this.eventRepository = eventRepository;
+			this.imageCommands = imageCommands;
 		}
 
 		/// <summary>
@@ -60,18 +68,48 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 				throw new NotFoundException($"There is not a location associated with the event with id {request.EventId}");
 			}
 
-			existingEvent.Update(new AllPropertiesModel
+			if (request.Image is not null)
 			{
-				Name = request.Name,
-				Description = request.Description,
-				EventDate = new EventDateModel
+				await this.imageCommands.DeleteImageAsync(existingEvent.ImageId);
+
+				var imageId = Guid.NewGuid();
+
+				await this.imageCommands.UpdateImageAsync(request.Image, imageId, request.Image.ContentType);
+
+				existingEvent.Update(new AllPropertiesModel
 				{
-					StartDate = request.EventDate.StartDate,
-					EndDate = request.EventDate.EndDate
-				},
-				MusicType = request.MusicType,
-				Artists = request.Artists
-			});
+					Name = request.Name,
+					Description = request.Description,
+					EventDate = new EventDateModel
+					{
+						StartDate = request.EventDate.StartDate,
+						EndDate = request.EventDate.EndDate
+					},
+					MusicType = request.MusicType,
+					Artists = request.Artists,
+					ImageId = imageId,
+				});
+			}
+			else
+			{
+				await this.imageCommands.DeleteImageAsync(existingEvent.ImageId);
+
+				var imageId = Guid.Empty;
+
+				existingEvent.Update(new AllPropertiesModel
+				{
+					Name = request.Name,
+					Description = request.Description,
+					EventDate = new EventDateModel
+					{
+						StartDate = request.EventDate.StartDate,
+						EndDate = request.EventDate.EndDate
+					},
+					MusicType = request.MusicType,
+					Artists = request.Artists,
+					ImageId = imageId,
+				});
+			}
 
 			existingLocation.Update(new LocationModel
 			{

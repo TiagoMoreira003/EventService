@@ -10,6 +10,7 @@
 namespace EventService.Presentation.WebAPI.Validation.Event
 {
 	using EventService.Presentation.WebAPI.Dto.Input.UpdateEventDto;
+	using EventService.Presentation.WebAPI.Validation.Files;
 	using FluentValidation;
 
 	/// <summary>
@@ -45,10 +46,6 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 				.MaximumLength(300)
 				.WithMessage("Description should be less than 300 characters");
 
-			RuleFor(x => x.Artists)
-				.NotEmpty()
-					.WithMessage("The artists shouldn't be null");
-
 			RuleFor(x => x.Location.Address)
 				.NotEmpty()
 					.WithMessage("The address shouldn't be null");
@@ -73,13 +70,16 @@ namespace EventService.Presentation.WebAPI.Validation.Event
 				.GreaterThan(-90).WithMessage("Latitude must be greater than -90")
 				.LessThan(90).WithMessage("Latitude must be less than 90")
 					.NotEmpty()
-						.WithMessage("Latitude shouldn't be null.");
+					.WithMessage("Latitude cannot be empty!");
 
 			RuleFor(x => x.Location.Longitude)
 				.GreaterThan(-180).WithMessage("Longitude must be greater than -180")
 				.LessThan(180).WithMessage("Longitude must be less than 180")
 					.NotEmpty()
-						.WithMessage("Longitude shouldn't be null.");
+					.WithMessage("Longitude cannot be empty!");
+
+			RuleFor(x => x.Image)
+				.SetValidator(new ImageValidator());
 		}
 	}
 }
