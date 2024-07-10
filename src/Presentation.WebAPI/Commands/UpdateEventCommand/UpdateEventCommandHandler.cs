@@ -36,7 +36,7 @@ namespace EventService.Presentation.WebAPI.Commands.UpdateEventCommand
 		/// Initializes a new instance of the <see cref="UpdateEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
-		/// <param name="updateImage">The update image.</param>
+		/// <param name="imageCommands">The update image.</param>
 		public UpdateEventCommandHandler(IEventRepository eventRepository, IImage imageCommands)
 		{
 			this.eventRepository = eventRepository;
