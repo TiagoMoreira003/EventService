@@ -9,6 +9,7 @@
 
 namespace EventService.Domain.AggregateModels.Event.Repository.Models
 {
+	using System;
 	using System.Collections.Generic;
 
 	/// <summary>
@@ -47,6 +48,14 @@ namespace EventService.Domain.AggregateModels.Event.Repository.Models
 		/// The location.
 		/// </value>
 		//public LocationModel Location { get; init; }
+
+		/// <summary>
+		/// Gets the image identifier.
+		/// </summary>
+		/// <value>
+		/// The image identifier.
+		/// </value>
+		public Guid ImageId { get; init; }
 
 		/// <summary>
 		/// Gets the type of the music.

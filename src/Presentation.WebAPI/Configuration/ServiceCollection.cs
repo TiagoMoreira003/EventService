@@ -9,6 +9,7 @@
 
 namespace EventService.Presentation.WebAPI.Configuration
 {
+	using EventService.Presentation.WebAPI.Commands.UpdateImage;
 	using Microsoft.Extensions.DependencyInjection;
 
 	/// <summary>
@@ -22,6 +23,7 @@ namespace EventService.Presentation.WebAPI.Configuration
 		/// <param name="services">The services.</param>
 		public static void RegisterPresentationServices(this IServiceCollection services)
 		{
+			services.AddScoped<IImage, ImageCommands>();
 		}
 	}
 }

@@ -53,6 +53,14 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 		public Guid EventId { get; init; }
 
 		/// <summary>
+		/// Gets the image.
+		/// </summary>
+		/// <value>
+		/// The image.
+		/// </value>
+		public IFormFile Image { get; init; }
+
+		/// <summary>
 		/// Gets the location.
 		/// </summary>
 		/// <value>

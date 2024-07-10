@@ -41,6 +41,14 @@ namespace EventService.Presentation.WebAPI.Dto.Input
 		public string Description { get; init; }
 
 		/// <summary>
+		/// Gets the image.
+		/// </summary>
+		/// <value>
+		/// The image.
+		/// </value>
+		public IFormFile Image { get; init; }
+
+		/// <summary>
 		/// Gets the type of the music.
 		/// </summary>
 		/// <value>

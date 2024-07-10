@@ -27,15 +27,16 @@ namespace EventService.Domain.AggregateModels.Event
 		private readonly List<string> artists;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Event" /> class.
+		/// Initializes a new instance of the <see cref="Event"/> class.
 		/// </summary>
-		/// <param name="eventDate">The date.</param>
+		/// <param name="eventDate">The event date.</param>
 		/// <param name="musicType">Type of the music.</param>
 		/// <param name="location">The location.</param>
 		/// <param name="description">The description.</param>
 		/// <param name="tenantId">The tenant identifier.</param>
 		/// <param name="name">The name.</param>
-		internal Event(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name)
+		/// <param name="imageId">The image identifier.</param>
+		internal Event(EventDate eventDate, MusicType musicType, Location location, string description, Guid tenantId, string name, Guid imageId)
 			: this()
 		{
 			this.EventDate = eventDate;
@@ -44,6 +45,7 @@ namespace EventService.Domain.AggregateModels.Event
 			this.Description = description;
 			this.TenantId = tenantId;
 			this.Name = name;
+			this.ImageId = imageId;
 		}
 
 		/// <summary>
@@ -92,6 +94,14 @@ namespace EventService.Domain.AggregateModels.Event
 		/// The date time.
 		/// </value>
 		public EventDate EventDate { get; private set; }
+
+		/// <summary>
+		/// Gets the image identifier.
+		/// </summary>
+		/// <value>
+		/// The image identifier.
+		/// </value>
+		public Guid ImageId { get; private set; }
 
 		/// <summary>
 		/// Gets the location.
@@ -153,11 +163,13 @@ namespace EventService.Domain.AggregateModels.Event
 		/// <param name="musicType">Type of the music.</param>
 		/// <param name="description">The description.</param>
 		/// <param name="name">The name.</param>
-		public void AddDetails(MusicType musicType, string description, string name)
+		/// <param name="imageId">The image identifier.</param>
+		public void AddDetails(MusicType musicType, string description, string name, Guid imageId)
 		{
 			this.MusicType = musicType;
 			this.Description = description;
 			this.Name = name;
+			this.ImageId = imageId;
 		}
 
 		/// <summary>
@@ -175,6 +187,7 @@ namespace EventService.Domain.AggregateModels.Event
 			{
 				UpdateArtists(model.Artists);
 			}
+			this.ImageId = model.ImageId;
 		}
 
 		/// <summary>

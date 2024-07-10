@@ -17,12 +17,36 @@ namespace EventService.Presentation.WebAPI.Dto.Output
 	public class EventDetailsDto
 	{
 		/// <summary>
+		/// Gets the artists.
+		/// </summary>
+		/// <value>
+		/// The artists.
+		/// </value>
+		public List<string> Artists { get; init; }
+
+		/// <summary>
+		/// Gets the description.
+		/// </summary>
+		/// <value>
+		/// The description.
+		/// </value>
+		public string Description { get; init; }
+
+		/// <summary>
 		/// Gets the event date.
 		/// </summary>
 		/// <value>
 		/// The event date.
 		/// </value>
 		public EventDateOutputDto EventDate { get; init; }
+
+		/// <summary>
+		/// Gets the image.
+		/// </summary>
+		/// <value>
+		/// The image.
+		/// </value>
+		public Guid ImageId { get; init; }
 
 		/// <summary>
 		/// Gets the location.
@@ -41,6 +65,14 @@ namespace EventService.Presentation.WebAPI.Dto.Output
 		public MusicType MusicType { get; init; }
 
 		/// <summary>
+		/// Gets the name.
+		/// </summary>
+		/// <value>
+		/// The name.
+		/// </value>
+		public string Name { get; init; }
+
+		/// <summary>
 		/// Gets the tenant identifier.
 		/// </summary>
 		/// <value>
@@ -55,29 +87,5 @@ namespace EventService.Presentation.WebAPI.Dto.Output
 		/// The uu identifier.
 		/// </value>
 		public Guid UUId { get; init; }
-
-		/// <summary>
-		/// Gets the artists.
-		/// </summary>
-		/// <value>
-		/// The artists.
-		/// </value>
-		public List<string> Artists { get; init; }
-
-		/// <summary>
-		/// Gets the description.
-		/// </summary>
-		/// <value>
-		/// The description.
-		/// </value>
-		public string Description { get; init; }
-
-		/// <summary>
-		/// Gets the name.
-		/// </summary>
-		/// <value>
-		/// The name.
-		/// </value>
-		public string Name { get; init; }
 	}
 }

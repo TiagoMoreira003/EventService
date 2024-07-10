@@ -13,6 +13,7 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 	using EventService.Domain.AggregateModels.Event.Repository;
 	using EventService.Domain.AggregateModels.Event.Repository.Models;
 	using EventService.Domain.Exceptions;
+	using EventService.Presentation.WebAPI.Commands.UpdateImage;
 	using MediatR;
 
 	/// <summary>
@@ -27,13 +28,18 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 		private readonly IEventRepository eventRepository;
 
 		/// <summary>
+		/// The update image
+		/// </summary>
+		private readonly IImage updateImage;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="AddDetailsEventCommandHandler"/> class.
 		/// </summary>
 		/// <param name="eventRepository">The event repository.</param>
-		/// <param name="locationRepository">The location repository.</param>
-		public AddDetailsEventCommandHandler(IEventRepository eventRepository)
+		public AddDetailsEventCommandHandler(IEventRepository eventRepository, IImage updateImage)
 		{
 			this.eventRepository = eventRepository;
+			this.updateImage = updateImage;
 		}
 
 		/// <summary>
@@ -60,14 +66,37 @@ namespace EventService.Presentation.WebAPI.Commands.AddDetailsEventCommand
 				throw new NotFoundException($"The location with {request.EventId} does not exist");
 			}
 
-			existingEvent.AddDetails(
+			if (request.Image is not null)
+			{
+				var imageId = Guid.NewGuid();
+
+				await this.updateImage.UpdateImageAsync(request.Image, imageId, request.Image.ContentType);
+
+				existingEvent.AddDetails(
 				request.MusicType,
 				request.Description,
-				request.Name
+				request.Name,
+				imageId
 				);
-			foreach (string artist in request.Artists)
+			}
+			else
 			{
-				existingEvent.AddArtist(artist);
+				var imageId = Guid.Empty;
+
+				existingEvent.AddDetails(
+				request.MusicType,
+				request.Description,
+				request.Name,
+				imageId
+				);
+			}
+
+			if (request.Artists is not null)
+			{
+				foreach (string artist in request.Artists)
+				{
+					existingEvent.AddArtist(artist);
+				}
 			}
 
 			existingLocation.AddAddress(new AddressModel
