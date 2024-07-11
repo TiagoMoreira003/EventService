@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventProfileOutput.cs" company="KROWN">
+// <copyright file="EventPoint.cs" company="KROWN">
 // Copyright (c) KROWN. All rights reserved.
 // </copyright>
 // <summary>
-// EventProfileOutput
+// EventPoint
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace EventService.Presentation.WebAPI.Dto.Output
