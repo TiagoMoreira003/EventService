@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Migrations\20240502174525_InitialSetup.cs" />
+	  <Compile Remove="Migrations\20240502174525_InitialSetup.Designer.cs" />
+	  <Compile Remove="Migrations\20240705110647_UpdatedDatabase.cs" />
+	  <Compile Remove="Migrations\20240705110647_UpdatedDatabase.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="MediatR" Version="12.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.3" />
